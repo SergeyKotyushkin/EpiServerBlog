@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
+using EPiServer.Web;
 
 namespace EpiServerBlogs.Web.Models.Pages
 {
@@ -14,8 +15,9 @@ namespace EpiServerBlogs.Web.Models.Pages
         [Display(GroupName = "SEO", Order = 200)]
         public virtual String MetaKeywords { get; set; }
 
-        [Display(GroupName = SystemTabNames.Settings, Order = 200)]
         [CultureSpecific]
-        public virtual bool Header { get; set; }
+        [Display(GroupName = SystemTabNames.Content, Order = 200)]
+        [UIHint(UIHint.Textarea)]
+        public virtual XhtmlString Header { get; set; }
     }
 }

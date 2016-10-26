@@ -1,4 +1,8 @@
-﻿@model EpiServerBlogs.Web.ViewModels.Contracts.ISitePageViewModel<EpiServerBlogs.Web.Models.Pages.SitePageData>
+﻿@using System.Web.Optimization
+@using EpiServerBlogs.Web.ViewModels.Contracts
+@using EpiServerBlogs.Web.Models.Pages
+
+@model ISitePageViewModel<SitePageData>
 
 @{
     Layout = null;
@@ -8,12 +12,42 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta name="viewport" content="width=device-width"/>
+
     <title>@Model.CurrentPage.MetaTitle</title>
+
+    @Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/js")
 </head>
-<body>
-<div>
-    @RenderBody()
-</div>
+<body class="container-fluid">
+    <div class="row">
+        <div>
+            <header>
+                <div class="row">
+                    <div class="col-xs-6 logo">
+                        <span>@Html.PropertyFor(m => m.CurrentPage.Header)</span>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+    <div class="row">
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <footer>
+                <div class="row">
+                    <div class="col-xs-6 logo">
+                        <span>Footer</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
 </body>
 </html>

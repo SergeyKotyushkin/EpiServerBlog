@@ -1,0 +1,13 @@
+﻿header {
+    height: 200px;
+    border-bottom: 3px dotted rgb(65, 117, 0);
+}
+
+footer {
+    height: 200px;
+    border-top: 3px dotted rgb(0, 65, 117);
+}
+
+.content {
+    padding: 20px 0;
+}
