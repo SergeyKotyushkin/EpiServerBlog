@@ -1,0 +1,15 @@
+﻿@model EpiServerBlogs.Web.ViewModels.Contracts.ISitePageViewModel<EpiServerBlogs.Web.Models.Pages.ArticlePage>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1>@Html.PropertyFor(m => m.CurrentPage.ArticleHeader)</h1>
+
+        <h4>
+            <em>@Html.PropertyFor(m => m.CurrentPage.ArticleDateTime)</em>
+        </h4>
+
+        <p>@Html.PropertyFor(m => m.CurrentPage.ArticleBody)</p>
+        
+        <a href="/"><<<</a>
+    </div>
+</div>

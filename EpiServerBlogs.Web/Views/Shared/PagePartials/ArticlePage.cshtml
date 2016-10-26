@@ -1,0 +1,7 @@
+﻿@model EpiServerBlogs.Web.Models.Pages.ArticlePage
+
+<li class="list-group-item">
+    <a href="@Url.ContentUrl(Model.ArticleLink)">
+        @Html.PropertyFor(m => m.ArticleHeader)
+    </a>
+</li>

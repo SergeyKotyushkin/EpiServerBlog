@@ -12,8 +12,8 @@
 
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=10"/>
     <meta name="viewport" content="width=device-width"/>
 
     <title>@Model.CurrentPage.MetaTitle</title>
@@ -22,32 +22,22 @@
     @Scripts.Render("~/bundles/js")
 </head>
 <body class="container-fluid">
-    <div class="row">
-        <div>
-            <header>
-                <div class="row">
-                    <div class="col-xs-6 logo">
-                        <span>@Html.PropertyFor(m => m.CurrentPage.Header)</span>
-                    </div>
-                </div>
-            </header>
+<div class="row">
+    <header>
+        <div class="col-xs-6 logo">
+            <span>@Html.PropertyFor(m => m.CurrentPage.Header)</span>
         </div>
-    </div>
-    <div class="row">
-        <div class="content">
-            @RenderBody()
+    </header>
+</div>
+<div class="content">
+    @RenderBody()
+</div>
+<div class="row">
+    <footer>
+        <div class="col-xs-6 logo">
+            <span>Footer</span>
         </div>
-    </div>
-    <div class="row">
-        <div>
-            <footer>
-                <div class="row">
-                    <div class="col-xs-6 logo">
-                        <span>Footer</span>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </div>
+    </footer>
+</div>
 </body>
 </html>

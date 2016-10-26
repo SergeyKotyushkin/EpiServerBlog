@@ -241,6 +241,8 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
     <Compile Include="Business\Initialization\BundleConfig.cs" />
+    <Compile Include="Controllers\ArticlePageController.cs" />
+    <Compile Include="Controllers\ArticlePagePartialController.cs" />
     <Compile Include="Controllers\BlogBlockController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
@@ -248,6 +250,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Blocks\BlogBlock.cs" />
+    <Compile Include="Models\Pages\ArticlePage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -280,6 +283,8 @@
     <Content Include="Views\StartPage\Index.cshtml" />
     <Content Include="Static\css\bootstrap.min.css.map" />
     <Content Include="Views\BlogBlock\Index.cshtml" />
+    <Content Include="Views\Shared\PagePartials\ArticlePage.cshtml" />
+    <Content Include="Views\ArticlePage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
