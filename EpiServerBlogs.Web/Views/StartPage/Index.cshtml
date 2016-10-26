@@ -1,3 +1,13 @@
 ﻿@model EpiServerBlogs.Web.ViewModels.SitePageViewModel<EpiServerBlogs.Web.Models.Pages.StartPage>
+<div>
+    <div class="row-fluid">
+        <div class="col-xs-12">
+            <h2>Blogs</h2>
+        </div>
+    </div>
+    <div class="row-fluid">
+        @Html.PropertyFor(m => m.CurrentPage.BlogBlockContentArea)
+    </div>
+</div>
 
-start page
+
