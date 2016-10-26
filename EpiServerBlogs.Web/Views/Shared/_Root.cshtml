@@ -1,0 +1,19 @@
+﻿@model EpiServerBlogs.Web.ViewModels.Contracts.ISitePageViewModel<EpiServerBlogs.Web.Models.Pages.SitePageData>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model.CurrentPage.MetaTitle</title>
+</head>
+<body>
+<div>
+    @RenderBody()
+</div>
+</body>
+</html>
