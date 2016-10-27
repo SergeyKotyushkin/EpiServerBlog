@@ -250,6 +250,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Blocks\BlogBlock.cs" />
+    <Compile Include="Models\Media\ImageFile.cs" />
     <Compile Include="Models\Pages\ArticlePage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
@@ -258,7 +259,6 @@
     <Compile Include="ViewModels\SitePageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Media\" />
     <Folder Include="Models\Properties\" />
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +285,8 @@
     <Content Include="Views\BlogBlock\Index.cshtml" />
     <Content Include="Views\Shared\PagePartials\ArticlePage.cshtml" />
     <Content Include="Views\ArticlePage\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MediaFile.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Image.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

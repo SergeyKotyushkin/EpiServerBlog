@@ -4,6 +4,7 @@ using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
+using EPiServer.Web;
 
 namespace EpiServerBlogs.Web.Models.Pages
 {
@@ -42,5 +43,14 @@ namespace EpiServerBlogs.Web.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 4)]
         public virtual Url ArticleLink { get; set; }
+
+        [CultureSpecific]
+        [Display(
+            Name = "Article Image",
+            Description = "This is an image of the current article",
+            GroupName = SystemTabNames.Content,
+            Order = 5)]
+        [UIHint(UIHint.MediaFile)]
+        public virtual ContentReference ArticleImage { get; set; }
     }
 }
