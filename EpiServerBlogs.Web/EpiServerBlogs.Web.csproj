@@ -165,12 +165,12 @@
       <HintPath>..\packages\NuGet.Core.2.5.0\lib\net40-Client\NuGet.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="StructureMap, Version=3.1.6.186, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
-      <HintPath>..\packages\structuremap-signed.3.1.6.186\lib\net40\StructureMap.dll</HintPath>
+    <Reference Include="StructureMap, Version=3.1.6.186, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.3.1.6.186\lib\net40\StructureMap.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="StructureMap.Net4, Version=3.1.6.186, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\structuremap-signed.3.1.6.186\lib\net40\StructureMap.Net4.dll</HintPath>
+      <HintPath>..\packages\structuremap.3.1.6.186\lib\net40\StructureMap.Net4.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="StructureMap.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
@@ -240,7 +240,12 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
+    <Compile Include="Business\ImageRepository\ExtendedThumbnailManager.cs" />
+    <Compile Include="Business\ImageRepository\ImageScaleDescriptorAttribute.cs" />
+    <Compile Include="Business\ImageRepository\ImageScaleType.cs" />
     <Compile Include="Business\Initialization\BundleConfig.cs" />
+    <Compile Include="Business\StructureMap\AllRegistry.cs" />
+    <Compile Include="Business\StructureMap\StructureMapFactory.cs" />
     <Compile Include="Controllers\ArticlePageController.cs" />
     <Compile Include="Controllers\ArticlePagePartialController.cs" />
     <Compile Include="Controllers\BlogBlockController.cs" />

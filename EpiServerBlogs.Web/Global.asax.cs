@@ -1,5 +1,5 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using EpiServerBlogs.Web.Business.StructureMap;
 
 namespace EpiServerBlogs.Web
 {
@@ -9,6 +9,7 @@ namespace EpiServerBlogs.Web
         {
             AreaRegistration.RegisterAllAreas();
 
+            StructureMapFactory.Init();
             //Tip: Want to call the EPiServer API on startup? Add an initialization module instead (Add -> New Item.. -> EPiServer -> Initialization Module)
         }
     }

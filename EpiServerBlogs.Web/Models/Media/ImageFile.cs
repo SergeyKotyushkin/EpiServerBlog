@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using EpiServerBlogs.Web.Business.ImageRepository;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
@@ -12,7 +13,7 @@ namespace EpiServerBlogs.Web.Models.Media
     public class ImageFile : ImageData
     {
         //Medium 300x160
-        [ImageDescriptor(Width = 500, Height = 500)]
+        [ImageScaleDescriptor(Width = 500, Height = 500)]
         public virtual Blob Medium { get; set; }
 
         [CultureSpecific]
