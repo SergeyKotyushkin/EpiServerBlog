@@ -11,6 +11,22 @@
         @Html.PropertyFor(m => m.CurrentPage.ArticleImage)
 
         <p>@Html.PropertyFor(m => m.CurrentPage.ArticleBody)</p>
+
+        @if (Model.CurrentPage.ArticleTags != null && Model.CurrentPage.ArticleTags.Count > 0)
+        {
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="panel-title">Tags</span>
+                </div>
+                <div class="panel-body">
+                    @foreach (var tag in Model.CurrentPage.ArticleTags)
+                    {
+                        <span>@tag</span>
+                        <span>&nbsp;</span>
+                    }
+                </div>
+            </div>
+        }
         
         <a href="/"><<<</a>
     </div>

@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using EpiServerBlogs.Web.Models.Properties;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
+using EPiServer.Shell.ObjectEditing;
 using EPiServer.Web;
 
 namespace EpiServerBlogs.Web.Models.Pages
@@ -52,5 +55,13 @@ namespace EpiServerBlogs.Web.Models.Pages
             Order = 5)]
         [UIHint(UIHint.MediaFile)]
         public virtual ContentReference ArticleImage { get; set; }
+
+
+        [Required]
+        [BackingType(typeof(PropertyStrings))]
+        [Display(Order = 306)]
+        [UIHint(Global.SiteUiHints.Strings)]
+        [CultureSpecific]
+        public virtual IList<string> ArticleTags { get; set; }
     }
 }

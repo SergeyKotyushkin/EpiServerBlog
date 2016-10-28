@@ -249,29 +249,39 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Global.cs" />
     <Compile Include="Models\Blocks\BlogBlock.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
     <Compile Include="Models\Pages\ArticlePage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
+    <Compile Include="Models\Properties\PropertyListBase.cs" />
+    <Compile Include="Models\Properties\PropertyStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Business\EditorDescriptors\StringsEditorDescriptor.cs" />
     <Compile Include="ViewModels\Contracts\ISitePageViewModel.cs" />
     <Compile Include="ViewModels\SitePageViewModel.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Models\Properties\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="ClientResources\Editors\stringlist\Editor.js" />
+    <Content Include="ClientResources\Editors\stringlist\nls\Labels.js" />
+    <Content Include="ClientResources\Editors\stringlist\Template.css" />
+    <Content Include="ClientResources\Editors\stringlist\Template.html" />
     <Content Include="Static\css\bootstrap.min.css" />
     <Content Include="Static\css\style.css" />
     <Content Include="Static\js\bootstrap.min.js" />
     <Content Include="Static\js\jquery-2.2.3.min.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\GeoLiteCity.dat" />
     <None Include="EPiServerLog.config" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="modules\_protected\Shell\web.config" />
     <Content Include="modules\_protected\Shell\Shell.zip" />
     <Content Include="modules\_protected\CMS\web.config" />
@@ -287,6 +297,9 @@
     <Content Include="Views\ArticlePage\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MediaFile.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Image.cshtml" />
+    <Content Include="module.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
