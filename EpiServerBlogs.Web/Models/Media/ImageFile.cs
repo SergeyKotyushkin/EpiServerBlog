@@ -12,9 +12,11 @@ namespace EpiServerBlogs.Web.Models.Media
     [MediaDescriptor(ExtensionString = "jpg,jpeg,png,gif")]
     public class ImageFile : ImageData
     {
-        //Medium 300x160
-        [ImageScaleDescriptor(Width = 500, Height = 500)]
+        [ImageScaleDescriptor(Width = 500, Height = 500, ScaleMethod = ImageScaleType.ScaleToFit)]
         public virtual Blob Medium { get; set; }
+
+        [ImageScaleDescriptor(Width = 50, Height = 50, ScaleMethod = ImageScaleType.ScaleToFit)]
+        public override Blob Thumbnail { get; set; }
 
         [CultureSpecific]
         [Editable(true)]
