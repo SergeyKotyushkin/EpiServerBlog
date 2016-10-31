@@ -10,6 +10,14 @@ namespace EpiServerBlogs.Web
         {
             public const string Strings = "StringList";
         }
+
+        /// <summary>
+        /// Names used for folders
+        /// </summary>
+        public static class FolderNames
+        {
+            public const string Blogs = "Blogs";
+        }
     }
 }
 
