@@ -1,3 +1,7 @@
+using EPiServer.Core;
+using EPiServer.ServiceLocation;
+using EPiServer.Web.Routing;
+
 namespace EpiServerBlogs.Web
 {
 
@@ -17,6 +21,13 @@ namespace EpiServerBlogs.Web
         public static class FolderNames
         {
             public const string Blogs = "Blogs";
+        }
+
+        public static string GetVirtualPath(ContentReference pageLink)
+        {
+            return ServiceLocator.Current.GetInstance<UrlResolver>()
+                .GetVirtualPath(pageLink)
+                .VirtualPath;
         }
     }
 }

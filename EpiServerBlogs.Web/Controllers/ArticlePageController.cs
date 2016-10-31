@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using EpiServerBlogs.Web.Models.Pages;
 using EpiServerBlogs.Web.ViewModels;
 using EPiServer;
-using EPiServer.Core;
-using EPiServer.Framework.DataAnnotations;
-using EPiServer.Web.Mvc;
+using EPiServer.DataAccess;
+using EPiServer.Security;
+using EPiServer.ServiceLocation;
 
 namespace EpiServerBlogs.Web.Controllers
 {
@@ -17,7 +15,21 @@ namespace EpiServerBlogs.Web.Controllers
             /* Implementation of action. You can create your own view model class that you pass to the view or
              * you can pass the page type for simpler templates */
 
-            var model = SitePageViewModel.Create(currentPage);
+            object model;
+            if (!currentPage.ArticleLink.IsEmpty())
+            {
+                model = SitePageViewModel.Create(currentPage);
+                return View(model);
+            }
+
+            var rep = ServiceLocator.Current.GetInstance<IContentRepository>();
+
+            var writableClonePage = (ArticlePage) currentPage.CreateWritableClone();
+
+            writableClonePage.ArticleLink = Global.GetVirtualPath(currentPage.ContentLink);
+            rep.Save(writableClonePage, SaveAction.Publish, AccessLevel.NoAccess);
+
+            model = SitePageViewModel.Create(writableClonePage);
             return View(model);
         }
     }

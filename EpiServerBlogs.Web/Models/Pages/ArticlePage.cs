@@ -42,7 +42,7 @@ namespace EpiServerBlogs.Web.Models.Pages
         [DisplayFormat(DataFormatString = "{0:MMMM d, yyyy}")]
         public virtual DateTime ArticleDateTime { get; set; }
 
-        [Required]
+        [ScaffoldColumn(false)]
         [CultureSpecific]
         [Display(
             Name = "Article Link",
