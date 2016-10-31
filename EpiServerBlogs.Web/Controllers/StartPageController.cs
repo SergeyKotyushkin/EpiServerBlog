@@ -45,8 +45,16 @@ namespace EpiServerBlogs.Web.Controllers
             }
 
             // get all added blog blocks
+            var allArticles = rep.GetChildren<IContent>(ContentReference.StartPage)
+                .Where(a => a is ArticlePage)
+                .Select(a => new {Article = rep.Get<ArticlePage>(a.ContentLink), a.ContentLink})
+                .Where(a => a != null && a.Article != null)
+                .ToArray();
+
+            // get all added blog blocks
             var currentPageBlogBlocks = rep.GetChildren<IContent>(blogFolder.ContentLink)
-                .Select(b => new {Block = rep.Get<BlogBlock>(b.ContentLink), b.ContentLink})
+                .Where(b => b is BlogBlock)
+                .Select(b => new { Block = rep.Get<BlogBlock>(b.ContentLink), b.ContentLink, b.Name })
                 .Where(b => b != null && b.Block != null)
                 .ToArray();
 
@@ -55,20 +63,39 @@ namespace EpiServerBlogs.Web.Controllers
 
             // get all blog blocks that exist
             var alreadyAddedBlogBlocks = writableClonePage.BlogBlockContentArea.Items
-                .Where(b => b.ContentLink.ID != 0)
                 .Select(b => new {Block = rep.Get<BlogBlock>(b.ContentLink), b.ContentLink})
                 .Where(b => b != null && b.Block != null)
                 .ToArray();
 
             // add new blog blocks if they does not exist already
-            foreach (var blog in currentPageBlogBlocks
-                .Where(
-                    blog =>
-                        !alreadyAddedBlogBlocks.Any(
-                            b =>
-                                b.Block.BlogAuthor == blog.Block.BlogAuthor &&
-                                b.Block.BlogHeader == blog.Block.BlogHeader)))
-                writableClonePage.BlogBlockContentArea.Items.Add(new ContentAreaItem {ContentLink = blog.ContentLink});
+            foreach (var blog in currentPageBlogBlocks)
+            {
+                if (!alreadyAddedBlogBlocks.Any(
+                    b => b.Block.BlogAuthor == blog.Block.BlogAuthor && b.Block.BlogHeader == blog.Block.BlogHeader))
+                    writableClonePage.BlogBlockContentArea.Items.Add(
+                        new ContentAreaItem { ContentLink = blog.ContentLink });
+                
+                // create writable blog block to update articles inside it
+                var writableBlogBlock = rep.Get<BlogBlock>(blog.ContentLink);
+                var writableBlogBlockClone = (BlogBlock) writableBlogBlock.CreateWritableClone();
+
+                if (writableBlogBlockClone == null)
+                    continue;
+
+                var blogArticles =
+                    allArticles.Where(a => a.Article.BlogSelect.Equals(blog.ContentLink.ID.ToString())).ToArray();
+
+                if (writableBlogBlockClone.ArticlesContentArea == null)
+                    writableBlogBlockClone.ArticlesContentArea = new ContentArea();
+
+                // clear all and add again
+                writableBlogBlockClone.ArticlesContentArea.Items.Clear();
+                foreach (var article in blogArticles)
+                    writableBlogBlockClone.ArticlesContentArea.Items.Add(
+                        new ContentAreaItem {ContentLink = article.ContentLink});
+
+                rep.Save((IContent) writableBlogBlockClone, SaveAction.Publish, AccessLevel.NoAccess);
+            }
 
             rep.Save(writableClonePage, SaveAction.Publish, AccessLevel.NoAccess);
             return writableClonePage;

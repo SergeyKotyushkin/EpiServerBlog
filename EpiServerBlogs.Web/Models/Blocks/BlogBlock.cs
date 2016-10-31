@@ -1,5 +1,5 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using EpiServerBlogs.Web.Models.Pages;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
@@ -23,6 +23,7 @@ namespace EpiServerBlogs.Web.Models.Blocks
             Order = 1)]
         public virtual string BlogAuthor { get; set; }
 
+        [AllowedTypes(typeof(ArticlePage))]
         [CultureSpecific]
         [Display(
             Name = "Articles Content Area",

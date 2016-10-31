@@ -15,6 +15,7 @@ namespace EpiServerBlogs.Web.Models.Pages
     [ContentType(DisplayName = "ArticlePage", GUID = "98f3df17-11ce-4dac-bc07-dcb95b155d32", Description = "")]
     public class ArticlePage : SitePageData
     {
+        [Required]
         [CultureSpecific]
         [Display(
             Name = "Article Header",
@@ -23,6 +24,7 @@ namespace EpiServerBlogs.Web.Models.Pages
             Order = 1)]
         public virtual XhtmlString ArticleHeader { get; set; }
 
+        [Required]
         [CultureSpecific]
         [Display(
             Name = "Article Body",
@@ -40,6 +42,7 @@ namespace EpiServerBlogs.Web.Models.Pages
         [DisplayFormat(DataFormatString = "{0:MMMM d, yyyy}")]
         public virtual DateTime ArticleDateTime { get; set; }
 
+        [Required]
         [CultureSpecific]
         [Display(
             Name = "Article Link",
@@ -59,7 +62,7 @@ namespace EpiServerBlogs.Web.Models.Pages
         
         [Required]
         [BackingType(typeof(PropertyStrings))]
-        [Display(Order = 306)]
+        [Display(Order = 6)]
         [UIHint(Global.SiteUiHints.Strings)]
         [CultureSpecific]
         public virtual IList<string> ArticleTags { get; set; }
@@ -70,7 +73,7 @@ namespace EpiServerBlogs.Web.Models.Pages
             Name = "Parent blog",
             Description = "Choose the blog that is a parent of this article",
             GroupName = SystemTabNames.Content,
-            Order = 6)]
+            Order = 7)]
         [SelectOne(SelectionFactoryType = typeof(BlockSelectionFactory))]
         public virtual string BlogSelect { get; set; }
     }

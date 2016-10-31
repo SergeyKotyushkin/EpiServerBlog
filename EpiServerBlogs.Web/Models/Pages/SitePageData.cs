@@ -9,6 +9,7 @@ namespace EpiServerBlogs.Web.Models.Pages
 {
     public abstract class SitePageData : PageData
     {
+        [Required]
         [Display(GroupName = "SEO", Order = 100)]
         public virtual String MetaTitle { get; set; }
 
