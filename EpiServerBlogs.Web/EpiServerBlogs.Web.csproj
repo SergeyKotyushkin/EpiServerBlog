@@ -245,6 +245,7 @@
     <Compile Include="Business\ImageRepository\ImageScaleType.cs" />
     <Compile Include="Business\Initialization\BundleConfig.cs" />
     <Compile Include="Business\Initialization\DependencyInjectionInit.cs" />
+    <Compile Include="Business\SelectionFactories\BlockSelectionFactory.cs" />
     <Compile Include="Controllers\ArticlePageController.cs" />
     <Compile Include="Controllers\ArticlePagePartialController.cs" />
     <Compile Include="Controllers\BlogBlockController.cs" />

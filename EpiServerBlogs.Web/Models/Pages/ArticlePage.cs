@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using EpiServerBlogs.Web.Business.SelectionFactories;
 using EpiServerBlogs.Web.Models.Properties;
 using EPiServer;
 using EPiServer.Core;
@@ -55,13 +56,22 @@ namespace EpiServerBlogs.Web.Models.Pages
             Order = 5)]
         [UIHint(UIHint.MediaFile)]
         public virtual ContentReference ArticleImage { get; set; }
-
-
+        
         [Required]
         [BackingType(typeof(PropertyStrings))]
         [Display(Order = 306)]
         [UIHint(Global.SiteUiHints.Strings)]
         [CultureSpecific]
         public virtual IList<string> ArticleTags { get; set; }
+
+        [Required]
+        [CultureSpecific]
+        [Display(
+            Name = "Parent blog",
+            Description = "Choose the blog that is a parent of this article",
+            GroupName = SystemTabNames.Content,
+            Order = 6)]
+        [SelectOne(SelectionFactoryType = typeof(BlockSelectionFactory))]
+        public virtual string BlogSelect { get; set; }
     }
 }
