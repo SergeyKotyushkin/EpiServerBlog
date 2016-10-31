@@ -8,7 +8,7 @@
             <em>@Html.PropertyFor(m => m.CurrentPage.ArticleDateTime)</em>
         </h4>
 
-        @Html.PropertyFor(m => m.CurrentPage.ArticleImage)
+        @Html.PropertyFor(m => m.CurrentPage.ArticleImage, new { BlobName = "Medium" })
 
         <p>@Html.PropertyFor(m => m.CurrentPage.ArticleBody)</p>
 
@@ -27,7 +27,28 @@
                 </div>
             </div>
         }
-        
+
         <a href="/"><<<</a>
+
+        <div class="row text-center">
+            <div class="col-xs-4">
+                @Html.PropertyFor(m => m.CurrentPage.ArticleImage, new { BlobName = "Fit" })
+                <div>
+                    <span>Fit</span>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                @Html.PropertyFor(m => m.CurrentPage.ArticleImage, new { BlobName = "Fill" })
+                <div>
+                    <span>Fill</span>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                @Html.PropertyFor(m => m.CurrentPage.ArticleImage, new { BlobName = "Resize" })
+                <div>
+                    <span>Resize</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -12,5 +12,5 @@
 
 @if (image != null)
 {
-    <img src="@(Url.ContentUrl(Model) + "/Medium")" alt="@(image.AlternateText ?? string.Empty)"/>
+    <img src="@(Url.ContentUrl(Model) + "/" + @ViewData["BlobName"])" alt="@(image.AlternateText ?? string.Empty)" />
 }

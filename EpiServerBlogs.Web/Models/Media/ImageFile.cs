@@ -15,8 +15,21 @@ namespace EpiServerBlogs.Web.Models.Media
         [ImageScaleDescriptor(Width = 500, Height = 500, ScaleMethod = ImageScaleType.ScaleToFit)]
         public virtual Blob Medium { get; set; }
 
+        [ImageScaleDescriptor(Width = 300, Height = 300, ScaleMethod = ImageScaleType.ScaleToFill)]
+        public virtual Blob Fill { get; set; }
+
+        [ImageScaleDescriptor(Width = 300, Height = 300, ScaleMethod = ImageScaleType.ScaleToFit)]
+        public virtual Blob Fit { get; set; }
+
+        [ImageScaleDescriptor(Width = 300, Height = 300, ScaleMethod = ImageScaleType.Resize)]
+        public virtual Blob Resize { get; set; }
+
         [ImageScaleDescriptor(Width = 50, Height = 50, ScaleMethod = ImageScaleType.ScaleToFit)]
-        public override Blob Thumbnail { get; set; }
+        public override Blob Thumbnail
+        {
+            get { return base.Thumbnail; }
+            set { base.Thumbnail = value; }
+        }
 
         [CultureSpecific]
         [Editable(true)]
