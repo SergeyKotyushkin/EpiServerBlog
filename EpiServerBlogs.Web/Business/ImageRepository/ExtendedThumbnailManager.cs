@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using EpiServerBlogs.Web.Business.ImageRepository;
 using EPiServer;
@@ -55,8 +56,10 @@ namespace EpiServerBlogs.Logic.ImageRepository
                     return CreateBlob(thumbnailUri, blobSource, new List<ImageOperation> {imgOperation},
                         MimeMapping.GetMimeMapping(blobSource.ID.LocalPath));
                 case ImageScaleType.ScaleToFit:
-                    return CreateBlob(thumbnailUri, blobSource, imageDescriptorAttribute.Width,
-                        imageDescriptorAttribute.Height);
+                    return CheckImageSize(blobSource, imageDescriptorAttribute.Width, imageDescriptorAttribute.Height)
+                        ? blobSource
+                        : CreateBlob(thumbnailUri, blobSource, imageDescriptorAttribute.Width,
+                            imageDescriptorAttribute.Height);
                 default:
                     var imgOperations = CreateImageOperations(blobSource, imageDescriptorAttribute.Width,
                         imageDescriptorAttribute.Height);
@@ -66,19 +69,16 @@ namespace EpiServerBlogs.Logic.ImageRepository
             }
         }
 
-        private IEnumerable<ImageOperation> CreateImageOperations(Blob blobSource, int width, int height)
+        private static IEnumerable<ImageOperation> CreateImageOperations(Blob blobSource, int width, int height)
         {
             var imgOperations = new List<ImageOperation>();
             int orgWidth;
             int orgHeight;
             using (var stream = blobSource.OpenRead())
+            using (var image = Image.FromStream(stream, false))
             {
-                var image = System.Drawing.Image.FromStream(stream, false);
-
                 orgWidth = image.Width;
                 orgHeight = image.Height;
-
-                image.Dispose();
             }
 
             var scaleFactor = Math.Max((double) width/orgWidth, (double) height/orgHeight);
@@ -100,21 +100,28 @@ namespace EpiServerBlogs.Logic.ImageRepository
             string mimeType)
         {
             byte[] buffer;
-            using (Stream stream = blobSource.OpenRead())
+            using (var stream = blobSource.OpenRead())
             {
                 var numArray = new byte[stream.Length];
                 stream.Read(numArray, 0, (int) stream.Length);
-                buffer = ImageService.RenderImage(numArray,
-                    imgOperations,
-                    mimeType, 1f, 50);
+                buffer = ImageService.RenderImage(numArray, imgOperations, mimeType, 1f, 50);
             }
-            Blob blob = _blobFactory.GetBlob(thumbnailUri);
-            using (Stream stream = blob.OpenWrite())
+
+            var blob = _blobFactory.GetBlob(thumbnailUri);
+            using (var stream = blob.OpenWrite())
             {
                 stream.Write(buffer, 0, buffer.Length);
                 stream.Flush();
             }
+
             return blob;
+        }
+
+        private static bool CheckImageSize(Blob blobSource, int destinaionHeight, int destinaionWidth)
+        {
+            using (var stream = blobSource.OpenRead())
+            using (var image = Image.FromStream(stream, false))
+                return image.Height < destinaionHeight && image.Width < destinaionWidth;
         }
     }
 }

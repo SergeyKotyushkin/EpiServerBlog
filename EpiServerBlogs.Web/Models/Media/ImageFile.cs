@@ -24,7 +24,7 @@ namespace EpiServerBlogs.Web.Models.Media
         [ImageScaleDescriptor(Width = 300, Height = 300, ScaleMethod = ImageScaleType.Resize)]
         public virtual Blob Resize { get; set; }
 
-        [ImageScaleDescriptor(Width = 50, Height = 50, ScaleMethod = ImageScaleType.ScaleToFit)]
+        [ImageScaleDescriptor]
         public override Blob Thumbnail
         {
             get { return base.Thumbnail; }
