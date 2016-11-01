@@ -21,3 +21,7 @@ footer {
     font-style: italic;
     color: rgb(174, 185, 161);
 }
+
+.article-link * {
+    margin: 0;
+}
