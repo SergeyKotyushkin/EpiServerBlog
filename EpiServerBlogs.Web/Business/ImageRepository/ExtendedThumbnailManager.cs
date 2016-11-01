@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using EpiServerBlogs.Web.Business.ImageRepository;
 using EPiServer;
 using EPiServer.Core.Internal;
 using EPiServer.DataAnnotations;
+using EPiServer.Framework;
 using EPiServer.Framework.Blobs;
 using EPiServer.ImageLibrary;
 using EPiServer.Web;
 using EPiServer.Web.Internal;
-using EPiServer.Framework;
 
-namespace EpiServerBlogs.Logic.ImageRepository
+namespace EpiServerBlogs.Web.Business.ImageRepository
 {
     public class ExtendedThumbnailManager : ThumbnailManager
     {
@@ -56,6 +55,9 @@ namespace EpiServerBlogs.Logic.ImageRepository
                     return CreateBlob(thumbnailUri, blobSource, new List<ImageOperation> {imgOperation},
                         MimeMapping.GetMimeMapping(blobSource.ID.LocalPath));
                 case ImageScaleType.ScaleToFit:
+                    return CreateBlob(thumbnailUri, blobSource, imageDescriptorAttribute.Width,
+                            imageDescriptorAttribute.Height);
+                case ImageScaleType.ScaleToFitIfNotLessThanDestination:
                     return CheckImageSize(blobSource, imageDescriptorAttribute.Width, imageDescriptorAttribute.Height)
                         ? blobSource
                         : CreateBlob(thumbnailUri, blobSource, imageDescriptorAttribute.Width,

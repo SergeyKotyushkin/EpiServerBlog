@@ -4,6 +4,7 @@
     {
         ScaleToFit,
         ScaleToFill,
-        Resize
+        Resize,
+        ScaleToFitIfNotLessThanDestination
     }
 }

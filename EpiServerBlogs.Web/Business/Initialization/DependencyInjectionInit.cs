@@ -1,4 +1,4 @@
-﻿using EpiServerBlogs.Logic.ImageRepository;
+﻿using EpiServerBlogs.Web.Business.ImageRepository;
 using EPiServer.Core.Internal;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;

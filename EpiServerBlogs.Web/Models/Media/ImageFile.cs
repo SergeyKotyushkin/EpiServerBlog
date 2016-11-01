@@ -12,7 +12,7 @@ namespace EpiServerBlogs.Web.Models.Media
     [MediaDescriptor(ExtensionString = "jpg,jpeg,png,gif")]
     public class ImageFile : ImageData
     {
-        [ImageScaleDescriptor(Width = 500, Height = 500, ScaleMethod = ImageScaleType.ScaleToFit)]
+        [ImageScaleDescriptor(Width = 500, Height = 500, ScaleMethod = ImageScaleType.ScaleToFitIfNotLessThanDestination)]
         public virtual Blob Medium { get; set; }
 
         [ImageScaleDescriptor(Width = 300, Height = 300, ScaleMethod = ImageScaleType.ScaleToFill)]
