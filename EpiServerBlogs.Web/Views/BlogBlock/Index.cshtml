@@ -9,8 +9,12 @@
         </div>
 
         <!-- List group -->
-        <ul class="list-group">
-            @Html.PropertyFor(m => m.ArticlesContentArea)
-        </ul>
+        @Html.PropertyFor(m => m.ArticlesContentArea, new
+        {
+            Customtag = "ul", 
+            CssClass = "list-group",
+            ChildrenCustomTagName = "li", 
+            ChildrenCssClass = "list-group-item"
+        })
     </div>
 </div>
