@@ -240,6 +240,7 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
+    <Compile Include="Business\EditorDescriptors\ImageEditorDescriptor.cs" />
     <Compile Include="Business\ImageRepository\ExtendedThumbnailManager.cs" />
     <Compile Include="Business\ImageRepository\ImageScaleDescriptorAttribute.cs" />
     <Compile Include="Business\ImageRepository\ImageScaleType.cs" />
@@ -269,6 +270,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="ClientResources\Editors\ImageContentSelector.js" />
     <Content Include="ClientResources\Editors\stringlist\Editor.js" />
     <Content Include="ClientResources\Editors\stringlist\nls\Labels.js" />
     <Content Include="ClientResources\Editors\stringlist\Template.css" />
