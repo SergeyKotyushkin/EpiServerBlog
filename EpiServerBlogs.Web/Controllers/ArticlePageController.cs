@@ -17,7 +17,9 @@ namespace EpiServerBlogs.Web.Controllers
 
             var model = new ArticlePageViewModel(currentPage)
             {
-                Comments = Comment.GetComments(currentPage.PageLink).Select(CommentDto.FromComment).ToArray()
+                Comments = Comment.GetComments(currentPage.PageLink)
+                    .Where(c => !c.DoNotShow)
+                    .Select(CommentDto.FromComment).ToArray()
             };
             return View(model);
         }

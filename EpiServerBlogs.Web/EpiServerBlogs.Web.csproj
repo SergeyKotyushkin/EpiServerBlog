@@ -253,12 +253,14 @@
     <Compile Include="Controllers\BlogBlockController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
+    <Compile Include="Gadgets\GadgetCommetsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Jobs\ScheduledJobBadWords.cs" />
     <Compile Include="Models\Blocks\BlogBlock.cs" />
+    <Compile Include="Models\Data\ArticleComments.cs" />
     <Compile Include="Models\DynamicData\Comment.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
     <Compile Include="Models\Pages\ArticlePage.cs" />
@@ -270,6 +272,7 @@
     <Compile Include="ViewModels\ArticlePageViewModel.cs" />
     <Compile Include="ViewModels\Contracts\ISitePageViewModel.cs" />
     <Compile Include="ViewModels\Dto\CommentDto.cs" />
+    <Compile Include="ViewModels\GadgetCommentsViewModel.cs" />
     <Compile Include="ViewModels\SitePageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -564,6 +567,7 @@
     <Content Include="Static\js\ckeditor\skins\moono\images\spinner.gif" />
     <Content Include="Static\js\ckeditor\styles.js" />
     <Content Include="Static\js\article.js" />
+    <Content Include="Static\js\gadget-comments.js" />
     <Content Include="Static\js\jquery-2.2.3.min.js" />
     <Content Include="Static\js\knockout-3.4.0.js" />
     <Content Include="Views\Web.config" />
@@ -611,6 +615,7 @@
     <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Static\js\ckeditor\skins\moono\readme.md" />
+    <Content Include="Views\GadgetCommets\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

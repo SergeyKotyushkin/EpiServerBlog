@@ -21,6 +21,8 @@ namespace EpiServerBlogs.Web.Models.DynamicData
 
         public bool Checked { get; set; }
 
+        public bool DoNotShow { get; set; }
+
         
         protected void Initialize()
         {
