@@ -28,7 +28,11 @@ namespace EpiServerBlogs.Web.Controllers
             if (!string.IsNullOrWhiteSpace(commentText))
             {
                 //var currentPage = PageContext.Page as ArticlePage;
-                var username = PrincipalInfo.CurrentPrincipal.Identity.Name ?? "Non-authentificated";
+                var isAuthenticated = PrincipalInfo.CurrentPrincipal.Identity.IsAuthenticated;
+                var username = isAuthenticated
+                    ? PrincipalInfo.CurrentPrincipal.Identity.Name
+                    : "Non-authentificated";
+
                 var comment = new Comment(currentPage.PageLink.ID, username, commentText);
                 comment.Save();
             }

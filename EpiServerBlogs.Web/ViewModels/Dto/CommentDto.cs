@@ -4,6 +4,9 @@ namespace EpiServerBlogs.Web.ViewModels.Dto
 {
     public class CommentDto
     {
+        private const string UncheckedMessage = "Comment is checking by moderator";
+
+
         public string DateOutput { get; set; }
 
         public string Username { get; set; }
@@ -19,7 +22,7 @@ namespace EpiServerBlogs.Web.ViewModels.Dto
             {
                 DateOutput = comment.DateTime.ToString("G"),
                 Username = comment.Name,
-                Text = comment.Text,
+                Text = comment.Checked ? comment.Text : UncheckedMessage,
                 Order = comment.Id.StoreId
             };
         }

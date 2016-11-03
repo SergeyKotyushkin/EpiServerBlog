@@ -257,6 +257,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
+    <Compile Include="Jobs\ScheduledJobBadWords.cs" />
     <Compile Include="Models\Blocks\BlogBlock.cs" />
     <Compile Include="Models\DynamicData\Comment.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
@@ -271,7 +272,12 @@
     <Compile Include="ViewModels\Dto\CommentDto.cs" />
     <Compile Include="ViewModels\SitePageViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\EpiServerBlogs.Logic\EpiServerBlogs.Logic.csproj">
+      <Project>{9F03E45D-122E-4254-893B-FA088C26BA1B}</Project>
+      <Name>EpiServerBlogs.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="ClientResources\Editors\ImageContentSelector.js" />
     <Content Include="ClientResources\Editors\stringlist\Editor.js" />

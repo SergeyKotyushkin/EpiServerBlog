@@ -33,3 +33,11 @@ footer {
 .old-comment {
     margin-bottom: 20px;
 }
+
+#comments-new input[type=submit] {
+    margin-bottom: 10px;
+}
+
+#comments-new p {
+    font-style: italic;
+}

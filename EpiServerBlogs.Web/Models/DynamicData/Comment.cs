@@ -19,6 +19,8 @@ namespace EpiServerBlogs.Web.Models.DynamicData
 
         public string Text { get; set; }
 
+        public bool Checked { get; set; }
+
         
         protected void Initialize()
         {
@@ -68,6 +70,16 @@ namespace EpiServerBlogs.Web.Models.DynamicData
         {
             var store = DynamicDataStoreFactory.Instance.CreateStore(typeof(Comment));
             var comments = store.Items<Comment>().Where(x => x.PageId == pageLink.ID);
+            return comments.ToArray();
+        }
+
+        /// <summary>
+        /// Get unchecked comments
+        /// </summary>
+        public static Comment[] GetUncheckedComments()
+        {
+            var store = DynamicDataStoreFactory.Instance.CreateStore(typeof(Comment));
+            var comments = store.Items<Comment>().Where(x => !x.Checked);
             return comments.ToArray();
         }
     }
