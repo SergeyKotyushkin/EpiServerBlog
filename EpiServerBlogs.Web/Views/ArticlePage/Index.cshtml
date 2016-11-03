@@ -1,4 +1,13 @@
-﻿@model EpiServerBlogs.Web.ViewModels.Contracts.ISitePageViewModel<EpiServerBlogs.Web.Models.Pages.ArticlePage>
+﻿@using EPiServer.Globalization
+@model EpiServerBlogs.Web.ViewModels.ArticlePageViewModel
+
+<script src="~/Static/js/knockout-3.4.0.js"></script>
+<script src="~/Static/js/ckeditor/ckeditor.js"></script>
+<script src="~/Static/js/article.js"></script>
+
+<script>
+    var comments = @Html.Raw(Json.Encode(Model.Comments));
+</script>
 
 <div class="row">
     <div class="col-xs-12">
@@ -8,7 +17,7 @@
             <em>@Html.PropertyFor(m => m.CurrentPage.ArticleDateTime)</em>
         </h4>
 
-        @Html.PropertyFor(m => m.CurrentPage.ArticleImage, new { BlobName = "Medium" })
+        @Html.PropertyFor(m => m.CurrentPage.ArticleImage, new {BlobName = "Medium"})
 
         <p>@Html.PropertyFor(m => m.CurrentPage.ArticleBody)</p>
 
@@ -32,19 +41,19 @@
 
         <div class="row text-center">
             <div class="col-xs-4">
-                @Html.PropertyFor(m => m.CurrentPage.ArticleImage, new { BlobName = "Fit" })
+                @Html.PropertyFor(m => m.CurrentPage.ArticleImage, new {BlobName = "Fit"})
                 <div>
                     <span>Fit</span>
                 </div>
             </div>
             <div class="col-xs-4">
-                @Html.PropertyFor(m => m.CurrentPage.ArticleImage, new { BlobName = "Fill" })
+                @Html.PropertyFor(m => m.CurrentPage.ArticleImage, new {BlobName = "Fill"})
                 <div>
                     <span>Fill</span>
                 </div>
             </div>
             <div class="col-xs-4">
-                @Html.PropertyFor(m => m.CurrentPage.ArticleImage, new { BlobName = "Resize" })
+                @Html.PropertyFor(m => m.CurrentPage.ArticleImage, new {BlobName = "Resize"})
                 <div>
                     <span>Resize</span>
                 </div>
@@ -52,3 +61,39 @@
         </div>
     </div>
 </div>
+@using (Html.BeginForm(null, null, new { language = ContentLanguage.PreferredCulture.Name, Action = "SaveComment"}, FormMethod.Post))
+{
+    <div id="comments-new" class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <textarea id="comment" name="commentText"></textarea>
+        </div>
+        <div class="col-xs-3">
+            <input type="submit" value="Save Comment" class="btn btn-primary"/>
+        </div>
+    </div>
+    <div data-bind="if: comments().length">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3 text-center">
+                <h2>Comments</h2>
+            </div>
+            <div class="col-xs-3">
+                <label>
+                    <span>Order by date (Ascending)</span>
+                    <input type="checkbox" data-bind="checked: orderByDate, enable: isOrdered()" />
+                </label>
+            </div>
+        </div>
+        <div class="row" data-bind="foreach: {data: comments, afterRender: afterCommentRender}">
+            <div class="col-xs-6 col-xs-offset-3 old-comment">
+                <div class="pull-left">
+                    <span data-bind="text: username"></span>
+                </div>
+                <div class="pull-right">
+                    <span data-bind="text: date"></span>
+                </div>
+                <div class="clearfix"></div>
+                <textarea data-bind="html: text, attr: {id: 'comm' + $index()}" class="all-comments"></textarea>
+            </div>
+        </div>
+    </div>
+}

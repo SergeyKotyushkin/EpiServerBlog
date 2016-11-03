@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using EpiServerBlogs.Web.Business.SelectionFactories;
 using EpiServerBlogs.Web.Models.Properties;
-using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
@@ -41,15 +40,6 @@ namespace EpiServerBlogs.Web.Models.Pages
             Order = 3)]
         [DisplayFormat(DataFormatString = "{0:MMMM d, yyyy}")]
         public virtual DateTime ArticleDateTime { get; set; }
-
-        [ScaffoldColumn(false)]
-        [CultureSpecific]
-        [Display(
-            Name = "Article Link",
-            Description = "This is a link to the current article",
-            GroupName = SystemTabNames.Content,
-            Order = 4)]
-        public virtual Url ArticleLink { get; set; }
 
         [CultureSpecific]
         [Display(

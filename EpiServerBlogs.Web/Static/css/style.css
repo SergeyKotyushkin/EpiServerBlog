@@ -25,3 +25,11 @@ footer {
 .article-link * {
     margin: 0;
 }
+
+#comments-new {
+    margin: 40px 0;
+}
+
+.old-comment {
+    margin-bottom: 20px;
+}
