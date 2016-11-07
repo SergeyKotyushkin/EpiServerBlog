@@ -18,6 +18,8 @@
 
     <title>@Model.CurrentPage.MetaTitle</title>
 
+    <link rel="shortcut icon" href="@Url.ContentUrl(Model.CurrentPage.Favicon)"/>
+
     @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/js")
 </head>

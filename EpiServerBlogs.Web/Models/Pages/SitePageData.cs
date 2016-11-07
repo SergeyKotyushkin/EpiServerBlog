@@ -20,5 +20,8 @@ namespace EpiServerBlogs.Web.Models.Pages
         [Display(GroupName = SystemTabNames.Content, Order = 200)]
         [UIHint(UIHint.Textarea)]
         public virtual XhtmlString Header { get; set; }
+        
+        [UIHint(UIHint.Image)]
+        public virtual ContentReference Favicon { get; set; }
     }
 }

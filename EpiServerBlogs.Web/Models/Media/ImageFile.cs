@@ -9,7 +9,7 @@ using EPiServer.Framework.DataAnnotations;
 namespace EpiServerBlogs.Web.Models.Media
 {
     [ContentType(DisplayName = "ImageFile", GUID = "7a06d47a-2890-4117-a6a2-30e9913c7b14", Description = "")]
-    [MediaDescriptor(ExtensionString = "jpg,jpeg,png,gif")]
+    [MediaDescriptor(ExtensionString = "jpg,jpeg,png,gif,ico")]
     public class ImageFile : ImageData
     {
         [ImageScaleDescriptor(Width = 500, Height = 500, ScaleMethod = ImageScaleType.ScaleToFitIfNotLessThanDestination)]

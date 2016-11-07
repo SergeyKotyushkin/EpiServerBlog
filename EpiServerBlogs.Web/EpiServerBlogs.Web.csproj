@@ -240,6 +240,7 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
+    <Compile Include="Business\EditorDescriptors\FaviconEditorDescriptor.cs" />
     <Compile Include="Business\EditorDescriptors\ImageEditorDescriptor.cs" />
     <Compile Include="Business\EditorDescriptors\StringsEditorDescriptor.cs" />
     <Compile Include="Business\ImageRepository\ExtendedThumbnailManager.cs" />
@@ -594,7 +595,6 @@
     <Content Include="Views\Shared\PagePartials\ArticlePage.cshtml" />
     <Content Include="Views\ArticlePage\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MediaFile.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\Image.cshtml" />
     <Content Include="module.config">
       <SubType>Designer</SubType>
     </Content>
