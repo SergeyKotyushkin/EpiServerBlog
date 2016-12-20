@@ -22,7 +22,8 @@
         </div>
     </div>
 </div>
-@if (Model.Catalog.Children.Any())
+
+@if (Model.Catalog.SubCatalogs.Any())
 {
     <div class="row">
         <div class="col-xs-12">
@@ -30,7 +31,7 @@
         </div>
     </div>
     <div class="row subcategories">
-        @foreach (var child in Model.Catalog.Children)
+        @foreach (var child in Model.Catalog.SubCatalogs)
         {
             switch (child.ChildType)
             {
@@ -56,6 +57,32 @@
                     break;
                 }
             }
+        }
+    </div>
+}
+
+@if (Model.Catalog.Products.Any())
+{
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Products</h2>
+        </div>
+    </div>
+    <div class="row category-products">
+        @foreach (var child in Model.Catalog.Products)
+        {
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="panel panel-default panel-category-product">
+                    <div class="panel-category-product-image-wrapper">
+                        <a href="@Url.ContentUrl(child.Product.ProductContent.ContentLink)">
+                            @Html.PropertyFor(m => child.Product.ProductContent.ProductImage)
+                        </a>
+                    </div>
+                    <div class="panel-category-product-name-wrapper">
+                        <a href="@Url.ContentUrl(child.Product.ProductContent.ContentLink)">@child.Product.ProductContent.Name</a>
+                    </div>
+                </div>
+            </div>
         }
     </div>
 }

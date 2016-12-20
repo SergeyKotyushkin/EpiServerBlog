@@ -59,23 +59,27 @@ footer {
     margin-bottom: 20px;
 }
 
-.panel-subcategory {
+.panel-subcategory, 
+.panel-category-product {
     min-height: 300px;
 }
 
-.panel-subcategory > .panel-subcategory-name-wrapper {
+.panel-subcategory > .panel-subcategory-name-wrapper,
+.panel-category-product > .panel-category-product-name-wrapper {
     font-size: 25px;
     text-align: center;
     margin-top: 10px;
 }
 
-.panel-subcategory > .panel-subcategory-image-wrapper {
+.panel-subcategory > .panel-subcategory-image-wrapper,
+.panel-category-product > .panel-category-product-image-wrapper {
     font-size: 25px;
     text-align: center;
     margin-top: 10px;
 }
 
-.panel-subcategory > .panel-subcategory-image-wrapper img {
+.panel-subcategory > .panel-subcategory-image-wrapper img,
+.panel-category-product > .panel-category-product-image-wrapper img {
     max-width: 100%;
     padding: 4px;
     display: inline-block;

@@ -385,6 +385,7 @@
     <Compile Include="Jobs\ScheduledJobBadWords.cs" />
     <Compile Include="Models\Blocks\BlogBlock.cs" />
     <Compile Include="Models\Catalog\SiteCatalogContent.cs" />
+    <Compile Include="Models\Catalog\SiteProductContent.cs" />
     <Compile Include="Models\Data\ArticleComments.cs" />
     <Compile Include="Models\DynamicData\Comment.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
@@ -397,6 +398,8 @@
     <Compile Include="ViewModels\ArticlePageViewModel.cs" />
     <Compile Include="ViewModels\Catalog\SiteCatalogViewModel.cs" />
     <Compile Include="ViewModels\Catalog\SiteCommerceViewModel.cs" />
+    <Compile Include="ViewModels\Catalog\SiteProductViewModel.cs" />
+    <Compile Include="ViewModels\Catalog\SiteVariationViewModel.cs" />
     <Compile Include="ViewModels\Contracts\ISitePageViewModel.cs" />
     <Compile Include="ViewModels\Dto\CommentDto.cs" />
     <Compile Include="ViewModels\GadgetCommentsViewModel.cs" />

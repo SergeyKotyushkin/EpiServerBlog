@@ -11,7 +11,17 @@ namespace EpiServerBlogs.Web.ViewModels.Catalog
             ChildType = CatalogChildrenTypes.Catalog;
         }
 
+        public SiteCommerceViewModel(SiteProductViewModel product)
+        {
+            Product = product;
+            Title = product.ProductContent.ProductTitle;
+            ChildType = CatalogChildrenTypes.Product;
+        }
+
+
         public SiteCatalogViewModel Catalog { get; set; }
+
+        public SiteProductViewModel Product { get; set; }
 
         public string Title { get; private set; }
 

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using EpiServerBlogs.Web.Models.Catalog;
 using EpiServerBlogs.Web.ViewModels.Catalog;
@@ -14,22 +13,30 @@ namespace EpiServerBlogs.Web.Controllers.Catalog
     {
         public ActionResult Index(SiteCatalogContent currentContent)
         {
-            var children = GetCatalogChildren(currentContent);
+            var subCatalogs = GetCatalogChildren(currentContent);
+            var products = GetProductChildren(currentContent);
 
-            var model = new SiteCommerceViewModel(new SiteCatalogViewModel(currentContent, children));
+            var model = new SiteCommerceViewModel(new SiteCatalogViewModel(currentContent, subCatalogs, products));
             return View(model);
         }
 
         private static SiteCommerceViewModel[] GetCatalogChildren(IContent catalog)
         {
             var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
-            var children = contentLoader.GetChildren<SiteCatalogContent>(catalog.ContentLink);
+            var subCatalogs = contentLoader.GetChildren<SiteCatalogContent>(catalog.ContentLink);
 
-            var resultList = new List<SiteCommerceViewModel>();
+            return
+                subCatalogs.Select(
+                    s =>
+                        new SiteCommerceViewModel(new SiteCatalogViewModel(s, null, null))).ToArray();
+        }
 
-            resultList.AddRange(children.Select(c => new SiteCommerceViewModel(new SiteCatalogViewModel(c))));
+        private static SiteCommerceViewModel[] GetProductChildren(IContent catalog)
+        {
+            var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+            var products = contentLoader.GetChildren<SiteProductContent>(catalog.ContentLink);
 
-            return resultList.ToArray();
+            return products.Select(p => new SiteCommerceViewModel(new SiteProductViewModel(p))).ToArray();
         }
     }
 }
