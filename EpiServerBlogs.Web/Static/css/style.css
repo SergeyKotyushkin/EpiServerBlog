@@ -41,3 +41,42 @@ footer {
 #comments-new p {
     font-style: italic;
 }
+
+/* Commerce */
+.category-image img {
+    max-width: 100%;
+}
+
+.category-image {
+    text-align: center;
+}
+
+.category-summary {
+    text-align: center;
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+.panel-subcategory {
+    min-height: 300px;
+}
+
+.panel-subcategory > .panel-subcategory-name-wrapper {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.panel-subcategory > .panel-subcategory-image-wrapper {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.panel-subcategory > .panel-subcategory-image-wrapper img {
+    max-width: 100%;
+    padding: 4px;
+    display: inline-block;
+}
