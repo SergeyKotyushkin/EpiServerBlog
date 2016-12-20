@@ -55,7 +55,7 @@ footer {
     text-align: center;
 }
 
-.category {
+.category, .subcategories {
     margin-bottom: 20px;
 }
 
