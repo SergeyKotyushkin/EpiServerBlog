@@ -1,5 +1,4 @@
-﻿@using EpiServerBlogs.Web.Enums
-@model EpiServerBlogs.Web.ViewModels.Catalog.SiteCommerceViewModel
+﻿@model EpiServerBlogs.Web.ViewModels.Catalog.SiteCommerceViewModel
 
 @{
     Layout = "~/Views/Shared/_LayoutCommerce.cshtml";
@@ -7,18 +6,18 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <h1>@Html.PropertyFor(m => m.Catalog.CatalogContent.CatalogName)</h1>
+        <h1>@Html.PropertyFor(m => m.Catalog.Name)</h1>
     </div>
 </div>
 <div class="row category">
     <div class="col-md-5">
         <div class="category-image">
-            @Html.PropertyFor(m => m.Catalog.CatalogContent.CatalogImage)
+            @Html.PropertyFor(m => m.Catalog.ImageUrl)
         </div>
     </div>
     <div class="col-md-7">
         <div class="category-summary">
-            <p>@Html.PropertyFor(m => m.Catalog.CatalogContent.CatalogDescription)</p>
+            <p>@Html.PropertyFor(m => m.Catalog.Description)</p>
         </div>
     </div>
 </div>
@@ -33,30 +32,19 @@
     <div class="row subcategories">
         @foreach (var child in Model.Catalog.SubCatalogs)
         {
-            switch (child.ChildType)
-            {
-                case CatalogChildrenTypes.Catalog:
-                {
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="panel panel-default panel-subcategory">
-                            <div class="panel-subcategory-image-wrapper">
-                                <a href="@Url.ContentUrl(child.Catalog.CatalogContent.ContentLink)">
-                                    @Html.PropertyFor(m => child.Catalog.CatalogContent.CatalogImage)
-                                </a>
-                            </div>
-                            <div class="panel-subcategory-name-wrapper">
-                                <a href="@Url.ContentUrl(child.Catalog.CatalogContent.ContentLink)">@child.Catalog.CatalogContent.Name</a>
-                            </div>
-                        </div>
+            var currentChild = child;
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="panel panel-default panel-subcategory">
+                    <div class="panel-subcategory-image-wrapper">
+                        <a href="@Url.ContentUrl(currentChild.Url)">
+                            @Html.PropertyFor(m => currentChild.ImageUrl)
+                        </a>
                     </div>
-                    break;
-                }
-                default:
-                {
-                    <div>@child</div>
-                    break;
-                }
-            }
+                    <div class="panel-subcategory-name-wrapper">
+                        <a href="@Url.ContentUrl(currentChild.Url)">@currentChild.Name</a>
+                    </div>
+                </div>
+            </div>
         }
     </div>
 }
@@ -71,15 +59,16 @@
     <div class="row category-products">
         @foreach (var child in Model.Catalog.Products)
         {
+            var currentChild = child;
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="panel panel-default panel-category-product">
                     <div class="panel-category-product-image-wrapper">
-                        <a href="@Url.ContentUrl(child.Product.ProductContent.ContentLink)">
-                            @Html.PropertyFor(m => child.Product.ProductContent.ProductImage)
+                        <a href="@Url.ContentUrl(currentChild.Url)">
+                            @Html.PropertyFor(m => currentChild.ImageUrl)
                         </a>
                     </div>
                     <div class="panel-category-product-name-wrapper">
-                        <a href="@Url.ContentUrl(child.Product.ProductContent.ContentLink)">@child.Product.ProductContent.Name</a>
+                        <a href="@Url.ContentUrl(currentChild.Url)">@currentChild.Name</a>
                     </div>
                 </div>
             </div>

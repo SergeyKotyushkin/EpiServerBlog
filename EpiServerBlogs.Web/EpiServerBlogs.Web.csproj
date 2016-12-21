@@ -369,13 +369,17 @@
     <Compile Include="Business\Initialization\BundleConfig.cs" />
     <Compile Include="Business\Initialization\DependencyInjectionInit.cs" />
     <Compile Include="Business\SelectionFactories\BlockSelectionFactory.cs" />
+    <Compile Include="Business\Services\CookieService.cs" />
+    <Compile Include="Business\Services\CurrentMarket.cs" />
+    <Compile Include="Business\StructureMapDependencyResolver.cs" />
     <Compile Include="Controllers\ArticlePageController.cs" />
     <Compile Include="Controllers\ArticlePagePartialController.cs" />
     <Compile Include="Controllers\BlogBlockController.cs" />
     <Compile Include="Controllers\Catalog\SiteCatalogController.cs" />
+    <Compile Include="Controllers\Catalog\SiteVariationController.cs" />
+    <Compile Include="Controllers\Catalog\SiteProductController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
-    <Compile Include="Enums\CatalogChildrenTypes.cs" />
     <Compile Include="Gadgets\GadgetCommetsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -386,6 +390,7 @@
     <Compile Include="Models\Blocks\BlogBlock.cs" />
     <Compile Include="Models\Catalog\SiteCatalogContent.cs" />
     <Compile Include="Models\Catalog\SiteProductContent.cs" />
+    <Compile Include="Models\Catalog\SiteVariationContent.cs" />
     <Compile Include="Models\Data\ArticleComments.cs" />
     <Compile Include="Models\DynamicData\Comment.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
@@ -396,10 +401,10 @@
     <Compile Include="Models\Properties\PropertyStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ArticlePageViewModel.cs" />
+    <Compile Include="ViewModels\Catalog\SiteSubCatalogViewModel.cs" />
     <Compile Include="ViewModels\Catalog\SiteCatalogViewModel.cs" />
     <Compile Include="ViewModels\Catalog\SiteCommerceViewModel.cs" />
-    <Compile Include="ViewModels\Catalog\SiteProductViewModel.cs" />
-    <Compile Include="ViewModels\Catalog\SiteVariationViewModel.cs" />
+    <Compile Include="ViewModels\Catalog\SiteCatalogProductViewModel.cs" />
     <Compile Include="ViewModels\Contracts\ISitePageViewModel.cs" />
     <Compile Include="ViewModels\Dto\CommentDto.cs" />
     <Compile Include="ViewModels\GadgetCommentsViewModel.cs" />

@@ -8,7 +8,7 @@ using EPiServer.Web;
 
 namespace EpiServerBlogs.Web.Models.Catalog
 {
-    [CatalogContentType(GUID = "5e4c09ee-9abd-4f75-8571-9527afb1c178", Description = "Site_Product_Content")]
+    [CatalogContentType(GUID = "5e4c09ee-9abd-4f75-8571-9527afb1c178", MetaClassName = "Site_Product_Content")]
     public class SiteProductContent : ProductContent
     {
         [Required]
