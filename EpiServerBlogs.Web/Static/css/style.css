@@ -43,6 +43,10 @@ footer {
 }
 
 /* Commerce */
+.fitted-image-wrapper img {
+    max-width: 100%;
+}
+
 .category-image img {
     max-width: 100%;
 }
@@ -83,4 +87,34 @@ footer {
     max-width: 100%;
     padding: 4px;
     display: inline-block;
+}
+
+.variation-mini {
+    margin: 5px;
+}
+
+.variation-mini img {
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px grey solid;
+}
+
+.variation-mini img:hover {
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    border: 4px goldenrod solid;
+}
+
+.description {
+    margin-top: 20px;    
+}
+
+.highlight {
+    padding: 9px 14px;
+    font-size: 20px;
+    margin-bottom: 14px;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
 }

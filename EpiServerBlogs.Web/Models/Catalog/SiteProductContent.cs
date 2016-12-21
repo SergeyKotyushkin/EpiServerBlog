@@ -28,7 +28,15 @@ namespace EpiServerBlogs.Web.Models.Catalog
             GroupName = SystemTabNames.Content,
             Order = 2)]
         public virtual string ProductName { get; set; }
-        
+
+        [CultureSpecific]
+        [Display(
+            Name = "Product Description",
+            Description = "Description of the current commerce product",
+            GroupName = SystemTabNames.Content,
+            Order = 3)]
+        public virtual XhtmlString ProductDescription { get; set; }
+
         [Display(
             Name = "Product Image",
             Description = "Image of the current commerce product",

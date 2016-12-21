@@ -32,8 +32,8 @@ namespace EpiServerBlogs.Web.Models.Catalog
         [Required]
         [CultureSpecific]
         [Display(
-            Name = "Variation Name",
-            Description = "Name of the current commerce variation",
+            Name = "Variation Description",
+            Description = "Description of the current commerce variation",
             GroupName = SystemTabNames.Content,
             Order = 2)]
         public virtual XhtmlString VariationDescription { get; set; }
