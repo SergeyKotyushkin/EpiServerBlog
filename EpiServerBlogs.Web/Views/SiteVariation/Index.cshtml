@@ -14,15 +14,25 @@
         <div class="fitted-image-wrapper">@Html.PropertyFor(m => m.Variation.ImageLink)</div>
     </div>
     <div class="col-md-7">
-        <div>
-            @if (!string.IsNullOrEmpty(Model.Variation.Price))
+        @using (Html.BeginForm("AddToCart", "SiteVariation", "POST"))
+        {
+            <div>
+                @if (Model.Variation.ShowPrice)
             {
-                <h3>Price:&nbsp;@Model.Variation.Price</h3>
+                    <h3>Price:&nbsp;@Model.Variation.Price</h3>
             }
-        </div>
-        <div>
-            <h3>Inventory:&nbsp;@Model.Variation.InventoryQuantity</h3>
-        </div>
+            </div>
+            <div>
+                <h3>Inventory:&nbsp;@Model.Variation.InventoryQuantity</h3>
+            </div>
+            <div>
+                @if (Model.Variation.ShowAddToCart)
+                {
+                    @Html.HiddenFor(m => m.Variation.Code, new {Name = "code"})
+                    <button type="submit" class="btn btn-primary">Add To Cart</button>
+                }
+            </div>
+        }
     </div>
 </div>
 <div class="row description">
