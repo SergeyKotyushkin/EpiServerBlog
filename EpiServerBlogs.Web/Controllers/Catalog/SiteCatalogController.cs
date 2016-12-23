@@ -9,7 +9,7 @@ using EPiServer.Web.Mvc;
 
 namespace EpiServerBlogs.Web.Controllers.Catalog
 {
-    public class SiteCatalogController : ContentController<SiteCatalogContent>
+    public class SiteCatalogController : ContentControllerBase<SiteCatalogContent>
     {
         private readonly IContentLoader _contentLoader;
 

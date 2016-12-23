@@ -9,7 +9,7 @@ using Mediachase.Commerce.Catalog;
 
 namespace EpiServerBlogs.Web.Controllers.Catalog
 {
-    public class SiteVariationController : ContentController<SiteVariationContent>
+    public class SiteVariationController : ContentControllerBase<SiteVariationContent>
     {
         private readonly IContentRepository _contentRepository;
         private readonly IOrderRepository _orderRepository;

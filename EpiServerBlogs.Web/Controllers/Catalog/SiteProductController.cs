@@ -5,7 +5,7 @@ using EPiServer.Web.Mvc;
 
 namespace EpiServerBlogs.Web.Controllers.Catalog
 {
-    public class SiteProductController : ContentController<SiteProductContent>
+    public class SiteProductController : ContentControllerBase<SiteProductContent>
     {
         public ActionResult Index(SiteProductContent currentContent)
         {

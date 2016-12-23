@@ -403,6 +403,7 @@
     <Compile Include="Controllers\ArticlePageController.cs" />
     <Compile Include="Controllers\ArticlePagePartialController.cs" />
     <Compile Include="Controllers\BlogBlockController.cs" />
+    <Compile Include="Controllers\Catalog\ContentControllerBase.cs" />
     <Compile Include="Controllers\Catalog\SiteCatalogController.cs" />
     <Compile Include="Controllers\Catalog\SiteVariationController.cs" />
     <Compile Include="Controllers\Catalog\SiteProductController.cs" />

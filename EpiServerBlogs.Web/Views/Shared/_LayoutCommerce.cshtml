@@ -20,8 +20,27 @@
     @Scripts.Render("~/bundles/js")
 </head>
 <body class="container-fluid">
-    <div class="row-fluid content">
+    <div class="row">
+        <header>
+            <div class="col-xs-6 logo">
+                <span>Commerce</span>
+            </div>
+            <div class="col-xs-6">
+                <div>
+                    @Html.Action("TopLinksPartial")
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="content">
         @RenderBody()
+    </div>
+    <div class="row">
+        <footer>
+            <div class="col-xs-6 logo">
+                <span>Footer</span>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
