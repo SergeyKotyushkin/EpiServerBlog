@@ -4,11 +4,10 @@ using EpiServerBlogs.Web.Business.Helpers;
 using EpiServerBlogs.Web.Business.Services.Contracts;
 using EpiServerBlogs.Web.Models.Pages;
 using EpiServerBlogs.Web.ViewModels;
-using EPiServer.Web.Mvc;
 
 namespace EpiServerBlogs.Web.Controllers
 {
-    public class LoginPageController : PageController<LoginPage>
+    public class LoginPageController : PageControllerBase<LoginPage>
     {
         private readonly ISiteAuthService _siteAuthService;
 
@@ -17,7 +16,6 @@ namespace EpiServerBlogs.Web.Controllers
             _siteAuthService = siteAuthService;
         }
 
-        [HttpGet]
         public ActionResult Index(LoginPage currentPage)
         {
             /* Implementation of action. You can create your own view model class that you pass to the view or
