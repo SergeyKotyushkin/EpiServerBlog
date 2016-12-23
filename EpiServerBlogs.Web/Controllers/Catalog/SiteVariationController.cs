@@ -4,7 +4,6 @@ using EpiServerBlogs.Web.Models.Catalog;
 using EpiServerBlogs.Web.ViewModels.Catalog;
 using EPiServer;
 using EPiServer.Commerce.Order;
-using EPiServer.Web.Mvc;
 using Mediachase.Commerce.Catalog;
 
 namespace EpiServerBlogs.Web.Controllers.Catalog
@@ -13,16 +12,16 @@ namespace EpiServerBlogs.Web.Controllers.Catalog
     {
         private readonly IContentRepository _contentRepository;
         private readonly IOrderRepository _orderRepository;
-        private readonly ISiteCartService _siteCartHelper;
+        private readonly ISiteCartService _siteCartService;
         private readonly ReferenceConverter _referenceConverter;
 
         public SiteVariationController(IContentRepository contentRepository, IOrderRepository orderRepository,
-            ISiteCartService siteCartHelper, ReferenceConverter referenceConverter)
+            ISiteCartService siteCartService, ReferenceConverter referenceConverter) : base(siteCartService)
         {
             _contentRepository = contentRepository;
             _referenceConverter = referenceConverter;
             _orderRepository = orderRepository;
-            _siteCartHelper = siteCartHelper;
+            _siteCartService = siteCartService;
         }
 
         public ActionResult Index(SiteVariationContent currentContent)
@@ -47,10 +46,10 @@ namespace EpiServerBlogs.Web.Controllers.Catalog
                 return Content("Variation code does not exist");
             }
 
-            var cart = _siteCartHelper.GetCart(_siteCartHelper.DefaultCartName);
+            var cart = _siteCartService.GetCart(_siteCartService.DefaultCartName);
 
             string errorMessage;
-            if (_siteCartHelper.AddToCart(cart, variationContent, out errorMessage))
+            if (_siteCartService.AddToCart(cart, variationContent, out errorMessage))
             {
                 _orderRepository.Save(cart);
             }

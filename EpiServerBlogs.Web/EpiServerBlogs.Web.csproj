@@ -443,8 +443,9 @@
     <Compile Include="ViewModels\Dto\CommentDto.cs" />
     <Compile Include="ViewModels\GadgetCommentsViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="ViewModels\Partial\ShoppingCartPartialViewModel.cs" />
     <Compile Include="ViewModels\SitePageViewModel.cs" />
-    <Compile Include="ViewModels\TopLinksViewModel.cs" />
+    <Compile Include="ViewModels\Partial\TopLinksPartialViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EpiServerBlogs.Logic\EpiServerBlogs.Logic.csproj">
@@ -459,6 +460,7 @@
     <Content Include="ClientResources\Editors\stringlist\Template.css" />
     <Content Include="ClientResources\Editors\stringlist\Template.html" />
     <Content Include="Static\css\bootstrap.min.css" />
+    <Content Include="Static\css\font-awesome.min.css" />
     <Content Include="Static\css\style.css" />
     <Content Include="Static\js\bootstrap.min.js" />
     <Content Include="Static\js\ckeditor\adapters\jquery.js" />
@@ -809,6 +811,10 @@
     <Content Include="Views\SiteVariation\Index.cshtml" />
     <Content Include="Views\LoginPage\Index.cshtml" />
     <Content Include="Views\Shared\PagePartials\TopLinksPartial.cshtml" />
+    <Content Include="Views\Shared\PagePartials\ShoppingCartPartial.cshtml" />
+    <Content Include="Static\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Static\fonts\fontawesome-webfont.woff" />
+    <Content Include="Static\fonts\fontawesome-webfont.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

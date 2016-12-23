@@ -15,6 +15,7 @@ namespace EpiServerBlogs.Web.Business.Initialization
 
             bundles.Add(new StyleBundle("~/bundles/css")
                 .Include("~/Static/css/bootstrap.min.css", new CssRewriteUrlTransform())
+                .Include("~/Static/css/font-awesome.min.css", new CssRewriteUrlTransform())
                 .Include("~/Static/css/style.css", new CssRewriteUrlTransform()));
         }
 

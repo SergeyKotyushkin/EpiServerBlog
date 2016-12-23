@@ -22,13 +22,14 @@
 <body class="container-fluid">
     <div class="row">
         <header>
-            <div class="col-xs-6 logo">
+            <div class="col-xs-12 col-md-5 logo">
                 <span>Commerce</span>
             </div>
-            <div class="col-xs-6">
-                <div>
-                    @Html.Action("TopLinksPartial")
-                </div>
+            <div class="col-xs-12 col-md-5">
+                @Html.Action("TopLinksPartial")
+            </div>
+            <div class="col-xs-12 col-md-2">
+                @Html.Action("ShoppingCartPartial")
             </div>
         </header>
     </div>

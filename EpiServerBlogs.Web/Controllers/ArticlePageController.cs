@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using EpiServerBlogs.Web.Business.Services.Contracts;
 using EpiServerBlogs.Web.Models.DynamicData;
 using EpiServerBlogs.Web.Models.Pages;
 using EpiServerBlogs.Web.ViewModels;
@@ -10,6 +11,10 @@ namespace EpiServerBlogs.Web.Controllers
 {
     public class ArticlePageController : PageControllerBase<ArticlePage>
     {
+        public ArticlePageController(ISiteCartService siteCartService) : base(siteCartService)
+        {
+        }
+
         public ActionResult Index(ArticlePage currentPage)
         {
             /* Implementation of action. You can create your own view model class that you pass to the view or

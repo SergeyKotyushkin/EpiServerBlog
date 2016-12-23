@@ -10,7 +10,8 @@ namespace EpiServerBlogs.Web.Controllers
     {
         private readonly ISiteAuthService _siteAuthService;
 
-        public LoginPageController(ISiteAuthService siteAuthService)
+        public LoginPageController(ISiteAuthService siteAuthService, ISiteCartService siteCartService)
+            : base(siteCartService)
         {
             _siteAuthService = siteAuthService;
         }
