@@ -1,0 +1,35 @@
+﻿@using EPiServer.Globalization
+@model EpiServerBlogs.Web.ViewModels.LoginPageViewModel
+
+@using (Html.BeginForm(null, null, new { language = ContentLanguage.PreferredCulture.Name, Action = "LogIn" }))
+{
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="form-group">
+                <div>
+                    <label for="username">User Name</label>
+                    @Html.TextBoxFor(m => m.UserName, new {@class = "form-control", @id = "username"})
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label for="password">Password</label>
+                    @Html.PasswordFor(m => m.Password, new {@class = "form-control", @id = "password"})
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <input type="submit" class="btn btn-default" value="Login" />
+                </div>
+            </div>
+            @if (Model.ShowErrorMessage)
+            {
+                <div>
+                    <div class="alert alert-danger">
+                        <span>@Model.ErrorMessage</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

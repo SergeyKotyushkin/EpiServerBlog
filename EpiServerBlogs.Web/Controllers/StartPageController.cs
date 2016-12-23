@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using EpiServerBlogs.Web.Business.Helpers;
 using EpiServerBlogs.Web.Models.Blocks;
 using EpiServerBlogs.Web.Models.Pages;
 using EpiServerBlogs.Web.ViewModels;
@@ -20,7 +21,8 @@ namespace EpiServerBlogs.Web.Controllers
 
             var updatedCurrentPage = AddNewBlogBlocks(currentPage);
 
-            var model = SitePageViewModel.Create(updatedCurrentPage);
+            var siteBaseModel = SiteBaseHelper.CreateViewModel(User.Identity, updatedCurrentPage);
+            var model = SitePageViewModel.Create(siteBaseModel);
             return View(model);
         }
 

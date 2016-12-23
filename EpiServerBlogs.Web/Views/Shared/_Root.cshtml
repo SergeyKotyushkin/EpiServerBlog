@@ -1,6 +1,7 @@
 ﻿@using System.Web.Optimization
 @using EpiServerBlogs.Web.ViewModels.Contracts
 @using EpiServerBlogs.Web.Models.Pages
+@using EPiServer.Globalization
 
 @model ISitePageViewModel<SitePageData>
 
@@ -28,6 +29,28 @@
     <header>
         <div class="col-xs-6 logo">
             <span>@Html.PropertyFor(m => m.CurrentPage.Header)</span>
+        </div>
+        <div class="col-xs-6">
+            <div>
+                @if (!Model.IsLoginPage && Model.IsAuthenticated)
+                {
+                    <div class="pull-right">
+                        @Html.PageLink("Log Out", Model.LoginPage.PageLink, new {language = ContentLanguage.PreferredCulture.Name, Action = "LogOut"}, null)
+                    </div>
+                    <div class="pull-right">
+                        <span>&nbsp;</span>
+                    </div>
+                    <div class="pull-right">
+                        <span>@Model.CurrentUserName</span>
+                    </div>
+                }
+                else if (!Model.IsLoginPage)
+                {
+                    <div class="pull-right">
+                        @Html.PageLink("Log In", Model.LoginPage.PageLink, new {language = ContentLanguage.PreferredCulture.Name, ReturnUrl = Request.RawUrl}, null)
+                    </div>
+                }
+            </div>
         </div>
     </header>
 </div>

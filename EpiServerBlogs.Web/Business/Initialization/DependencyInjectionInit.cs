@@ -21,6 +21,7 @@ namespace EpiServerBlogs.Web.Business.Initialization
                 c.For<ThumbnailManager>().Use<ExtendedThumbnailManager>();
                 c.For<ISiteCartService>().Use<SiteCartService>();
                 c.For<ISitePriceService>().Use<SitePriceService>();
+                c.For<ISiteAuthService>().Use<SiteAuthService>();
             });
 
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(context.Container));

@@ -253,6 +253,22 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
       <Private>True</Private>
@@ -283,6 +299,10 @@
     </Reference>
     <Reference Include="NuGet.Core, Version=2.5.40416.9020, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\NuGet.Core.2.5.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="StructureMap, Version=3.1.6.186, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
@@ -366,8 +386,12 @@
     <Compile Include="Business\Extensions\SiteProductContentExtensions.cs" />
     <Compile Include="Business\Facades\CurrentContactFacade.cs" />
     <Compile Include="Business\Facades\CustomerContextFacade.cs" />
+    <Compile Include="Business\Helpers\SiteBaseHelper.cs" />
+    <Compile Include="Business\Owin\Startup.cs" />
+    <Compile Include="Business\Services\Contracts\ISiteAuthService.cs" />
     <Compile Include="Business\Services\Contracts\ISiteCartService.cs" />
     <Compile Include="Business\Services\Contracts\ISitePriceService.cs" />
+    <Compile Include="Business\Services\SiteAuthService.cs" />
     <Compile Include="Business\Services\SiteCartService.cs" />
     <Compile Include="Business\ImageRepository\ExtendedThumbnailManager.cs" />
     <Compile Include="Business\ImageRepository\ImageScaleDescriptorAttribute.cs" />
@@ -383,6 +407,7 @@
     <Compile Include="Controllers\Catalog\SiteCatalogController.cs" />
     <Compile Include="Controllers\Catalog\SiteVariationController.cs" />
     <Compile Include="Controllers\Catalog\SiteProductController.cs" />
+    <Compile Include="Controllers\LoginPageController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Gadgets\GadgetCommetsController.cs" />
@@ -400,6 +425,7 @@
     <Compile Include="Models\DynamicData\Comment.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
     <Compile Include="Models\Pages\ArticlePage.cs" />
+    <Compile Include="Models\Pages\LoginPage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
     <Compile Include="Models\Properties\PropertyListBase.cs" />
@@ -416,6 +442,8 @@
     <Compile Include="ViewModels\Contracts\ISitePageViewModel.cs" />
     <Compile Include="ViewModels\Dto\CommentDto.cs" />
     <Compile Include="ViewModels\GadgetCommentsViewModel.cs" />
+    <Compile Include="ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="ViewModels\SiteBaseViewModel.cs" />
     <Compile Include="ViewModels\SitePageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -779,6 +807,7 @@
     <Content Include="Views\SiteCatalog\Index.cshtml" />
     <Content Include="Views\SiteProduct\Index.cshtml" />
     <Content Include="Views\SiteVariation\Index.cshtml" />
+    <Content Include="Views\LoginPage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
