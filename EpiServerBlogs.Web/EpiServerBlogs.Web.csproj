@@ -386,7 +386,6 @@
     <Compile Include="Business\Extensions\SiteProductContentExtensions.cs" />
     <Compile Include="Business\Facades\CurrentContactFacade.cs" />
     <Compile Include="Business\Facades\CustomerContextFacade.cs" />
-    <Compile Include="Business\Helpers\SiteBaseHelper.cs" />
     <Compile Include="Business\Owin\Startup.cs" />
     <Compile Include="Business\Services\Contracts\ISiteAuthService.cs" />
     <Compile Include="Business\Services\Contracts\ISiteCartService.cs" />
@@ -443,8 +442,8 @@
     <Compile Include="ViewModels\Dto\CommentDto.cs" />
     <Compile Include="ViewModels\GadgetCommentsViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
-    <Compile Include="ViewModels\SiteBaseViewModel.cs" />
     <Compile Include="ViewModels\SitePageViewModel.cs" />
+    <Compile Include="ViewModels\TopLinksViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EpiServerBlogs.Logic\EpiServerBlogs.Logic.csproj">
@@ -808,6 +807,7 @@
     <Content Include="Views\SiteProduct\Index.cshtml" />
     <Content Include="Views\SiteVariation\Index.cshtml" />
     <Content Include="Views\LoginPage\Index.cshtml" />
+    <Content Include="Views\Shared\PagePartials\TopLinksPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

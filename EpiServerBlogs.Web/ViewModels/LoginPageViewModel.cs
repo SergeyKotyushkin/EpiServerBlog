@@ -1,18 +1,11 @@
-﻿using System.Security.Principal;
-using EpiServerBlogs.Web.Models.Pages;
+﻿using EpiServerBlogs.Web.Models.Pages;
 
 namespace EpiServerBlogs.Web.ViewModels
 {
     public class LoginPageViewModel : SitePageViewModel<LoginPage>
     {
-        public LoginPageViewModel(LoginPage currentPage, IIdentity user) : base(currentPage, user)
+        public LoginPageViewModel(LoginPage currentPage) : base(currentPage)
         {
-            IsLoginPage = true;
-        }
-
-        public LoginPageViewModel(SiteBaseViewModel<LoginPage> model) : base(model)
-        {
-            IsLoginPage = true;
         }
         
         public string UserName { get; set; }

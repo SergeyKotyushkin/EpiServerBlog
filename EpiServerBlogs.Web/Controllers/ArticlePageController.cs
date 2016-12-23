@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using EpiServerBlogs.Web.Business.Helpers;
 using EpiServerBlogs.Web.Models.DynamicData;
 using EpiServerBlogs.Web.Models.Pages;
 using EpiServerBlogs.Web.ViewModels;
@@ -16,8 +15,7 @@ namespace EpiServerBlogs.Web.Controllers
             /* Implementation of action. You can create your own view model class that you pass to the view or
              * you can pass the page type for simpler templates */
 
-            var siteBaseModel = SiteBaseHelper.CreateViewModel(User.Identity, currentPage);
-            var model = new ArticlePageViewModel(siteBaseModel)
+            var model = new ArticlePageViewModel(currentPage)
             {
                 Comments = Comment.GetComments(currentPage.PageLink)
                     .Where(c => !c.DoNotShow)

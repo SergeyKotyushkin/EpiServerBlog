@@ -1,0 +1,25 @@
+﻿@model EpiServerBlogs.Web.ViewModels.TopLinksViewModel
+
+@if (Model.IsLoginPage)
+{
+    return;
+}
+
+@if (Model.IsAuthenticated)
+{
+    <div class="pull-right">
+        @Html.PageLink("Log Out", Model.LoginPageLink, new {language = Model.Language, Action = "LogOut"}, null)
+    </div>
+    <div class="pull-right">
+        <span>&nbsp;</span>
+    </div>
+    <div class="pull-right">
+        <span>@Model.UserName</span>
+    </div>
+}
+else
+{
+    <div class="pull-right">
+        @Html.PageLink("Log In", Model.LoginPageLink, new {language = Model.Language, Model.ReturnUrl}, null)
+    </div>
+}
