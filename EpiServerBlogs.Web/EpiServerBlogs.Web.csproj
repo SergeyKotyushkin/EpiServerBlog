@@ -771,7 +771,7 @@
     <Content Include="modules\_protected\CMS\CMS.zip" />
     <Content Include="modules\_protected\EPiServer.Packaging.UI\web.config" />
     <Content Include="modules\_protected\EPiServer.Packaging.UI\EPiServer.Packaging.UI.zip" />
-    <Content Include="Views\Shared\_Root.cshtml" />
+    <Content Include="Views\Shared\_LayoutCms.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\StartPage\Index.cshtml" />
     <Content Include="Static\css\bootstrap.min.css.map" />
