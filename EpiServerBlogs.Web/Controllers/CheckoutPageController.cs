@@ -2,6 +2,8 @@
 using EpiServerBlogs.Web.Business.Services.Contracts;
 using EpiServerBlogs.Web.Models.Pages;
 using EpiServerBlogs.Web.ViewModels;
+using EPiServer;
+using Mediachase.Commerce.Catalog;
 using Mediachase.Commerce.Orders;
 
 namespace EpiServerBlogs.Web.Controllers
@@ -9,10 +11,15 @@ namespace EpiServerBlogs.Web.Controllers
     public class CheckoutPageController : PageControllerBase<CheckoutPage>
     {
         private readonly ISiteCartService _siteCartService;
+        private readonly IContentRepository _contentRepository;
+        private readonly ReferenceConverter _referenceConverter;
 
-        public CheckoutPageController(ISiteCartService siteCartService) : base(siteCartService)
+        public CheckoutPageController(ReferenceConverter referenceConverter, ISiteCartService siteCartService,
+            IContentRepository contentRepository) : base(siteCartService)
         {
+            _referenceConverter = referenceConverter;
             _siteCartService = siteCartService;
+            _contentRepository = contentRepository;
         }
 
         public ActionResult Index(CheckoutPage currentPage)
@@ -20,8 +27,8 @@ namespace EpiServerBlogs.Web.Controllers
             /* Implementation of action. You can create your own view model class that you pass to the view or
              * you can pass the page type for simpler templates */
 
-            var cart = (Cart)_siteCartService.GetCart(_siteCartService.DefaultCartName);
-            var model = new CheckoutPageViewModel(currentPage, cart);
+            var cart = (Cart) _siteCartService.GetCart(_siteCartService.DefaultCartName);
+            var model = new CheckoutPageViewModel(currentPage, cart, _contentRepository, _referenceConverter);
             return View(model);
         }
     }

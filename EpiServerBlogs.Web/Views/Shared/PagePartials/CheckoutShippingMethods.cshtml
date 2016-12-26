@@ -1,0 +1,17 @@
+﻿@model EpiServerBlogs.Web.ViewModels.Checkout.CheckoutShippingMethodsViewModel
+
+<div class="row">
+    <div class="col-xs-12">
+        @foreach (var shippingRate in Model.ShippingRates)
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>
+                        @Html.RadioButton("shippingMethod", shippingRate.Id)
+                        <span>@shippingRate.Name&nbsp;(@shippingRate.Money.ToString())</span>
+                    </label>
+                </div> 
+            </div>
+        }
+    </div>
+</div>
