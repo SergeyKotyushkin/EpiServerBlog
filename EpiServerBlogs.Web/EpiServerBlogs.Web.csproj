@@ -383,7 +383,9 @@
     <Compile Include="Business\EditorDescriptors\FaviconEditorDescriptor.cs" />
     <Compile Include="Business\EditorDescriptors\ImageEditorDescriptor.cs" />
     <Compile Include="Business\EditorDescriptors\StringsEditorDescriptor.cs" />
+    <Compile Include="Business\Extensions\DecimalExtensions.cs" />
     <Compile Include="Business\Extensions\SiteProductContentExtensions.cs" />
+    <Compile Include="Business\Facades\AppContextFacade.cs" />
     <Compile Include="Business\Facades\CurrentContactFacade.cs" />
     <Compile Include="Business\Facades\CustomerContextFacade.cs" />
     <Compile Include="Business\Owin\Startup.cs" />
@@ -444,6 +446,7 @@
     <Compile Include="ViewModels\CheckoutPageViewModel.cs" />
     <Compile Include="ViewModels\Checkout\CheckoutCartItemsViewModel.cs" />
     <Compile Include="ViewModels\Checkout\CheckoutLineItemViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\CheckoutOrderSummaryViewModel.cs" />
     <Compile Include="ViewModels\Contracts\ISitePageViewModel.cs" />
     <Compile Include="ViewModels\Dto\CommentDto.cs" />
     <Compile Include="ViewModels\GadgetCommentsViewModel.cs" />
@@ -822,6 +825,7 @@
     <Content Include="Static\fonts\fontawesome-webfont.woff2" />
     <Content Include="Views\Shared\PagePartials\CheckoutCartItems.cshtml" />
     <None Include="Views\CheckoutPage\Index.cshtml" />
+    <Content Include="Views\Shared\PagePartials\CheckoutOrderSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

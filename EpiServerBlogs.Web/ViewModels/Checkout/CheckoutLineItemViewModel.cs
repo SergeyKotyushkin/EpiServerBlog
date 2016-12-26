@@ -1,5 +1,5 @@
-﻿using EPiServer.Core;
-using Mediachase.Commerce;
+﻿using EpiServerBlogs.Web.Business.Extensions;
+using EPiServer.Core;
 using Mediachase.Commerce.Core;
 
 namespace EpiServerBlogs.Web.ViewModels.Checkout
@@ -22,12 +22,12 @@ namespace EpiServerBlogs.Web.ViewModels.Checkout
 
         public string DisplayPlacedPrice
         {
-            get { return new Money(PlacedPrice, SiteContext.Current.Currency).ToString(); }
+            get { return PlacedPrice.ToMoney(SiteContext.Current.Currency); }
         }
 
         public string DisplayExtendedPrice
         {
-            get { return new Money(ExtendedPrice, SiteContext.Current.Currency).ToString(); }
+            get { return ExtendedPrice.ToMoney(SiteContext.Current.Currency); }
         }
     }
 }

@@ -1,16 +1,35 @@
-﻿using System.Linq;
+﻿using System;
+using EpiServerBlogs.Web.Business.Facades;
 using EpiServerBlogs.Web.Business.Services.Contracts;
 using EpiServerBlogs.Web.Models.Catalog;
-using EPiServer.Commerce.Catalog.ContentTypes;
 using Mediachase.Commerce;
+using Mediachase.Commerce.Catalog;
+using Mediachase.Commerce.Core;
+using Mediachase.Commerce.Pricing;
 
 namespace EpiServerBlogs.Web.Business.Services
 {
     public class SitePriceService : ISitePriceService
     {
+        private readonly IPriceService _priceService;
+        private readonly ICurrentMarket _currentMarket;
+        private readonly AppContextFacade _appContextFacade;
+
+        public SitePriceService(IPriceService priceService, ICurrentMarket currentMarket,
+            AppContextFacade appContextFacade)
+        {
+            _priceService = priceService;
+            _currentMarket = currentMarket;
+            _appContextFacade = appContextFacade;
+        }
+
         public Money? GetPrice(SiteVariationContent variationContent)
         {
-            var price = variationContent.GetPrices().FirstOrDefault();
+            var price = _priceService.GetDefaultPrice(
+                _currentMarket.GetCurrentMarket().MarketId,
+                DateTime.Now,
+                new CatalogKey(_appContextFacade.ApplicationId, variationContent.Code),
+                SiteContext.Current.Currency);
             return price == null ? null : (Money?) price.UnitPrice;
         }
 

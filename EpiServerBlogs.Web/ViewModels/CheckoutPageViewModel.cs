@@ -14,6 +14,8 @@ namespace EpiServerBlogs.Web.ViewModels
         public Cart Cart { get; set; }
 
         public CheckoutCartItemsViewModel CartItemsViewModel { get; set; }
+
+        public CheckoutOrderSummaryViewModel OrderSummaryViewModel { get; set; }
  
         public CheckoutPageViewModel(CheckoutPage currentPage, Cart cart) : base(currentPage)
         {
@@ -43,6 +45,14 @@ namespace EpiServerBlogs.Web.ViewModels
                         Quantity = (int) li.Quantity
                     };
                 })
+            };
+
+            OrderSummaryViewModel = new CheckoutOrderSummaryViewModel
+            {
+                SubTotal = cart.SubTotal,
+                Discount = cart.TaxTotal,
+                Shipping = cart.ShippingTotal,
+                Total = cart.Total
             };
         }
     }
