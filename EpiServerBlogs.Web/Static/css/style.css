@@ -118,3 +118,13 @@ footer {
     -ms-border-radius: 4px;
     border-radius: 4px;
 }
+
+.cart-dropdown {
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.checkout-variation-mini {
+    width: 100px;
+    border: 2px grey solid;
+}

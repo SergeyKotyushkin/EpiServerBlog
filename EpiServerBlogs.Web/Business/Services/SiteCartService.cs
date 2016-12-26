@@ -62,9 +62,10 @@ namespace EpiServerBlogs.Web.Business.Services
             return false;
         }
 
-        public string DefaultCartName
+        public int GetTotalCartQuantity(string cartName)
         {
-            get { return Cart.DefaultName; }
+            var cart = (Cart) GetCart(cartName);
+            return (int) cart.OrderForms.Sum(of => of.LineItems.Sum(li => li.Quantity));
         }
 
         public IEnumerable<Cart> GetAllCarts(Guid customerId)
@@ -78,6 +79,11 @@ namespace EpiServerBlogs.Web.Business.Services
             searchOptions.Classes.Add("ShoppingCart");
 
             return OrderContext.Current.FindCarts(parameters, searchOptions);
+        }
+
+        public string DefaultCartName
+        {
+            get { return Cart.DefaultName; }
         }
     }
 }

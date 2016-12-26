@@ -14,8 +14,10 @@ namespace EpiServerBlogs.Web.Business.Services.Contracts
 
         bool RemoveFromCart(ICart cart, string code, out string errorMessage);
 
-        string DefaultCartName { get; }
+        int GetTotalCartQuantity(string name);
 
         IEnumerable<Cart> GetAllCarts(Guid customerId);
+        
+        string DefaultCartName { get; }
     }
 }

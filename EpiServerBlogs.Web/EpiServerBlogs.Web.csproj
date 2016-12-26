@@ -407,6 +407,7 @@
     <Compile Include="Controllers\Catalog\SiteCatalogController.cs" />
     <Compile Include="Controllers\Catalog\SiteVariationController.cs" />
     <Compile Include="Controllers\Catalog\SiteProductController.cs" />
+    <Compile Include="Controllers\CheckoutPageController.cs" />
     <Compile Include="Controllers\LoginPageController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
@@ -425,6 +426,7 @@
     <Compile Include="Models\DynamicData\Comment.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
     <Compile Include="Models\Pages\ArticlePage.cs" />
+    <Compile Include="Models\Pages\CheckoutPage.cs" />
     <Compile Include="Models\Pages\LoginPage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
@@ -439,6 +441,9 @@
     <Compile Include="ViewModels\Catalog\SiteCatalogViewModel.cs" />
     <Compile Include="ViewModels\Catalog\SiteCommerceViewModel.cs" />
     <Compile Include="ViewModels\Catalog\SiteCatalogProductViewModel.cs" />
+    <Compile Include="ViewModels\CheckoutPageViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\CheckoutCartItemsViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\CheckoutLineItemViewModel.cs" />
     <Compile Include="ViewModels\Contracts\ISitePageViewModel.cs" />
     <Compile Include="ViewModels\Dto\CommentDto.cs" />
     <Compile Include="ViewModels\GadgetCommentsViewModel.cs" />
@@ -815,6 +820,8 @@
     <Content Include="Static\fonts\fontawesome-webfont.ttf" />
     <Content Include="Static\fonts\fontawesome-webfont.woff" />
     <Content Include="Static\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Views\Shared\PagePartials\CheckoutCartItems.cshtml" />
+    <None Include="Views\CheckoutPage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

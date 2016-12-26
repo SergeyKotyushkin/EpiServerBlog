@@ -1,0 +1,12 @@
+﻿@model EpiServerBlogs.Web.ViewModels.CheckoutPageViewModel
+
+<h2>Checkout</h2>
+
+<div class="row">
+    <div class="col-xs-12 col-md-4">
+        <div>
+            <h3>CartItems</h3>
+            @Html.Partial("PagePartials/CheckoutCartItems", Model.CartItemsViewModel)
+        </div>
+    </div>
+</div>

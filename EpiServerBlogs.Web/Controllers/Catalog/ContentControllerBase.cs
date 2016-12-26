@@ -37,11 +37,14 @@ namespace EpiServerBlogs.Web.Controllers.Catalog
 
         public ActionResult ShoppingCartPartial()
         {
+            var checkoutPage = DataFactory.Instance.GetChildren<CheckoutPage>(ContentReference.StartPage).FirstOrDefault();
+
             var cart = (Cart)_siteCartService.GetCart(_siteCartService.DefaultCartName);
             return PartialView("PagePartials/ShoppingCartPartial", new ShoppingCartPartialViewModel
             {
                 CartName = cart.Name,
-                TotalCount = (int)cart.OrderForms.Sum(of => of.LineItems.Sum(li => li.Quantity))
+                TotalCount = _siteCartService.GetTotalCartQuantity(cart.Name),
+                CheckoutPageLink = checkoutPage == null ? PageReference.EmptyReference : checkoutPage.PageLink
             });
         }
     }
