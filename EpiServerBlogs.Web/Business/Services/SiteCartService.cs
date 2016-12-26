@@ -1,9 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using EpiServerBlogs.Web.Business.Facades;
 using EpiServerBlogs.Web.Business.Services.Contracts;
 using EpiServerBlogs.Web.Models.Catalog;
 using EPiServer.Commerce.Order;
 using Mediachase.Commerce.Orders;
+using Mediachase.Commerce.Orders.Search;
 
 namespace EpiServerBlogs.Web.Business.Services
 {
@@ -62,6 +65,19 @@ namespace EpiServerBlogs.Web.Business.Services
         public string DefaultCartName
         {
             get { return Cart.DefaultName; }
+        }
+
+        public IEnumerable<Cart> GetAllCarts(Guid customerId)
+        {
+            var parameters = new OrderSearchParameters
+            {
+                SqlWhereClause = string.Format("OrderGroup.CustomerId = '{0}'", customerId)
+            };
+
+            var searchOptions = new OrderSearchOptions {CacheResults = false};
+            searchOptions.Classes.Add("ShoppingCart");
+
+            return OrderContext.Current.FindCarts(parameters, searchOptions);
         }
     }
 }

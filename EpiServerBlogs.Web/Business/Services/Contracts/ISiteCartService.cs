@@ -1,5 +1,8 @@
-﻿using EpiServerBlogs.Web.Models.Catalog;
+﻿using System;
+using System.Collections.Generic;
+using EpiServerBlogs.Web.Models.Catalog;
 using EPiServer.Commerce.Order;
+using Mediachase.Commerce.Orders;
 
 namespace EpiServerBlogs.Web.Business.Services.Contracts
 {
@@ -12,5 +15,7 @@ namespace EpiServerBlogs.Web.Business.Services.Contracts
         bool RemoveFromCart(ICart cart, string code, out string errorMessage);
 
         string DefaultCartName { get; }
+
+        IEnumerable<Cart> GetAllCarts(Guid customerId);
     }
 }

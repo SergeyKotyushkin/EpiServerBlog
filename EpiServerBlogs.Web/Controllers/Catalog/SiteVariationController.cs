@@ -58,8 +58,7 @@ namespace EpiServerBlogs.Web.Controllers.Catalog
                 return Content("Not added");
             }
 
-
-            return Content("Added");
+            return RedirectToAction("Index");
         }
     }
 }
