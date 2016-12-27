@@ -3,6 +3,8 @@ using EpiServerBlogs.Web.Business.Services.Contracts;
 using EpiServerBlogs.Web.Models.Pages;
 using EpiServerBlogs.Web.ViewModels;
 using EPiServer;
+using EPiServer.Core;
+using EPiServer.Web.Mvc.Html;
 using Mediachase.Commerce.Catalog;
 using Mediachase.Commerce.Orders;
 
@@ -28,8 +30,21 @@ namespace EpiServerBlogs.Web.Controllers
              * you can pass the page type for simpler templates */
 
             var cart = (Cart) _siteCartService.GetCart(_siteCartService.DefaultCartName);
+            if (_siteCartService.IsEmptyCart(cart))
+                return Redirect(Url.ContentUrl(ContentReference.StartPage));
+
             var model = new CheckoutPageViewModel(currentPage, cart, _contentRepository, _referenceConverter);
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult PlaceOrder()
+        {
+            var cart = _siteCartService.GetCart(_siteCartService.DefaultCartName);
+            if (_siteCartService.IsEmptyCart(cart))
+                return Redirect(Url.ContentUrl(ContentReference.StartPage));
+            
+            return RedirectToAction("Index");
         }
     }
 }

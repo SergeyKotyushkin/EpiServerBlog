@@ -3,6 +3,14 @@
 <h2>Checkout</h2>
 
 <div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm(null, null, new {Action = "PlaceOrder"}, FormMethod.Post))
+        {
+            <input type="submit" value="Place Order" class="btn btn-primary"/>
+        }
+    </div>
+</div>
+<div class="row">
     <div class="col-xs-12 col-md-4">
         <div>
             <h3>Cart Items</h3>

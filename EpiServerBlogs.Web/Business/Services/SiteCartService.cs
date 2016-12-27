@@ -81,6 +81,11 @@ namespace EpiServerBlogs.Web.Business.Services
             return OrderContext.Current.FindCarts(parameters, searchOptions);
         }
 
+        public bool IsEmptyCart(ICart cart)
+        {
+            return GetTotalCartQuantity(cart.Name) > 0;
+        }
+
         public string DefaultCartName
         {
             get { return Cart.DefaultName; }

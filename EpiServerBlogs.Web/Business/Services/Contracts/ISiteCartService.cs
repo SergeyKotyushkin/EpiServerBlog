@@ -17,7 +17,9 @@ namespace EpiServerBlogs.Web.Business.Services.Contracts
         int GetTotalCartQuantity(string name);
 
         IEnumerable<Cart> GetAllCarts(Guid customerId);
-        
+
+        bool IsEmptyCart(ICart cart);
+
         string DefaultCartName { get; }
     }
 }
