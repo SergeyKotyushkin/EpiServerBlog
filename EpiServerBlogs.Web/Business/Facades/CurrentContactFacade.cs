@@ -20,6 +20,11 @@ namespace EpiServerBlogs.Web.Business.Facades
             get { return CustomerContext.Current.CurrentContactId; }
         }
 
+        public virtual string ContactEmail
+        {
+            get { return CustomerContext.Current.CurrentContact.Email; }
+        }
+
         public virtual IEnumerable<CustomerAddress> ContactAddresses
         {
             get

@@ -24,6 +24,7 @@ namespace EpiServerBlogs.Web.Controllers
         {
             var user = User.Identity;
             var loginPage = DataFactory.Instance.GetChildren<LoginPage>(ContentReference.StartPage).FirstOrDefault();
+            var accountPage = DataFactory.Instance.GetChildren<AccountPage>(ContentReference.StartPage).FirstOrDefault();
 
             return PartialView("PagePartials/TopLinksPartial", new TopLinksPartialViewModel
             {
@@ -32,7 +33,8 @@ namespace EpiServerBlogs.Web.Controllers
                 ReturnUrl = Request.RawUrl,
                 Language = ContentLanguage.PreferredCulture.Name,
                 LoginPageLink = loginPage == null ? PageReference.EmptyReference : loginPage.PageLink,
-                IsLoginPage = currentPage is LoginPage
+                IsLoginPage = currentPage is LoginPage,
+                AccountPageLink = accountPage == null ? PageReference.EmptyReference : accountPage.PageLink
             });
         }
 

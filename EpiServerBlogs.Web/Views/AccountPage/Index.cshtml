@@ -1,0 +1,39 @@
+﻿@model EpiServerBlogs.Web.ViewModels.AccountPageViewModel
+
+<h2>Your Account Information</h2>
+
+<h4>@Model.UserName</h4>
+<h4>@Model.Email</h4>
+
+<h3>Addresses</h3>
+@Html.PageLink("Create New Address", Model.AddressPageLink, null, new { @class = "btn btn-link" })
+<div class="row">
+    @if (Model.BillingAddresses.Any())
+    {
+        <div class="col-xs-12 col-md-6">
+            <h4>Billing Addresses</h4>
+            @foreach (var address in Model.BillingAddresses)
+            {
+                <div class="row">
+                    <div class="col-xs-12">
+                        @Html.Partial("PagePartials/AccountAddress.cshtml", address)
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    @if (Model.ShippingAddresses.Any())
+    {
+        <div class="col-xs-12 col-md-6">
+            <h4>Shipping Addresses</h4>
+            @foreach (var address in Model.ShippingAddresses)
+            {
+                <div class="row">
+                    <div class="col-xs-12">
+                        @Html.Partial("PagePartials/AccountAddress.cshtml", address)
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

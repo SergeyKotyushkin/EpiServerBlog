@@ -15,7 +15,7 @@
             <span>&nbsp;</span>
         </div>
         <div class="pull-right">
-            <span>@Model.UserName</span>
+            @Html.PageLink(Model.UserName, Model.AccountPageLink, null, new { @class = "btn btn-link" })
         </div>
     }
     else

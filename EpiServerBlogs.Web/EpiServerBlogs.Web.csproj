@@ -386,6 +386,7 @@
     <Compile Include="Business\Extensions\DecimalExtensions.cs" />
     <Compile Include="Business\Extensions\SiteProductContentExtensions.cs" />
     <Compile Include="Business\Facades\AppContextFacade.cs" />
+    <Compile Include="Business\Facades\CountryManagerFacade.cs" />
     <Compile Include="Business\Facades\CurrentContactFacade.cs" />
     <Compile Include="Business\Facades\CustomerContextFacade.cs" />
     <Compile Include="Business\Owin\Startup.cs" />
@@ -402,6 +403,7 @@
     <Compile Include="Business\SelectionFactories\BlockSelectionFactory.cs" />
     <Compile Include="Business\Services\SitePriceService.cs" />
     <Compile Include="Business\StructureMapDependencyResolver.cs" />
+    <Compile Include="Controllers\AddressPageController.cs" />
     <Compile Include="Controllers\ArticlePageController.cs" />
     <Compile Include="Controllers\ArticlePagePartialController.cs" />
     <Compile Include="Controllers\BlogBlockController.cs" />
@@ -410,6 +412,7 @@
     <Compile Include="Controllers\Catalog\SiteVariationController.cs" />
     <Compile Include="Controllers\Catalog\SiteProductController.cs" />
     <Compile Include="Controllers\CheckoutPageController.cs" />
+    <Compile Include="Controllers\AccountPageController.cs" />
     <Compile Include="Controllers\RegisterPageController.cs" />
     <Compile Include="Controllers\LoginPageController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
@@ -428,6 +431,8 @@
     <Compile Include="Models\Data\ArticleComments.cs" />
     <Compile Include="Models\DynamicData\Comment.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
+    <Compile Include="Models\Pages\AccountPage.cs" />
+    <Compile Include="Models\Pages\AddressPage.cs" />
     <Compile Include="Models\Pages\ArticlePage.cs" />
     <Compile Include="Models\Pages\CheckoutPage.cs" />
     <Compile Include="Models\Pages\LoginPage.cs" />
@@ -437,6 +442,9 @@
     <Compile Include="Models\Properties\PropertyListBase.cs" />
     <Compile Include="Models\Properties\PropertyStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AddressViewModel.cs" />
+    <Compile Include="ViewModels\AddressPageViewModel.cs" />
+    <Compile Include="ViewModels\AccountPageViewModel.cs" />
     <Compile Include="ViewModels\ArticlePageViewModel.cs" />
     <Compile Include="ViewModels\Catalog\SiteProductVariationViewModel.cs" />
     <Compile Include="ViewModels\Catalog\SiteVariationViewModel.cs" />
@@ -829,10 +837,13 @@
     <Content Include="Static\fonts\fontawesome-webfont.woff" />
     <Content Include="Static\fonts\fontawesome-webfont.woff2" />
     <Content Include="Views\Shared\PagePartials\CheckoutCartItems.cshtml" />
+    <None Include="Views\AccountPage\Index.cshtml" />
+    <None Include="Views\AddressPage\Index.cshtml" />
     <None Include="Views\CheckoutPage\Index.cshtml" />
     <Content Include="Views\Shared\PagePartials\CheckoutOrderSummary.cshtml" />
     <Content Include="Views\Shared\PagePartials\CheckoutShippingMethods.cshtml" />
     <None Include="Views\RegisterPage\Index.cshtml" />
+    <Content Include="Views\Shared\PagePartials\AccountAddress.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

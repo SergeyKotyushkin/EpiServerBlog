@@ -14,6 +14,8 @@ namespace EpiServerBlogs.Web.ViewModels.Partial
 
         public PageReference LoginPageLink { get; set; }
 
+        public PageReference AccountPageLink { get; set; }
+        
         public bool IsLoginPage { get; set; }
     }
 }
