@@ -8,9 +8,12 @@ namespace EpiServerBlogs.Web.ViewModels
         public SitePageViewModel(T currentPage)
         {
             CurrentPage = currentPage;
+            ShowCart = !(currentPage is RegisterPage || currentPage is LoginPage);
         }
 
         public T CurrentPage { get; private set; }
+
+        public bool ShowCart { get; private set; }
     }
 
     public static class SitePageViewModel

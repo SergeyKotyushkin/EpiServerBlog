@@ -128,3 +128,8 @@ footer {
     width: 100px;
     border: 2px grey solid;
 }
+
+label > input {
+    margin-top: 5px;
+    font-weight: normal;
+}

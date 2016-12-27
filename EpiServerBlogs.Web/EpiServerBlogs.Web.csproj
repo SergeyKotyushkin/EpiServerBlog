@@ -410,6 +410,7 @@
     <Compile Include="Controllers\Catalog\SiteVariationController.cs" />
     <Compile Include="Controllers\Catalog\SiteProductController.cs" />
     <Compile Include="Controllers\CheckoutPageController.cs" />
+    <Compile Include="Controllers\RegisterPageController.cs" />
     <Compile Include="Controllers\LoginPageController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
@@ -430,6 +431,7 @@
     <Compile Include="Models\Pages\ArticlePage.cs" />
     <Compile Include="Models\Pages\CheckoutPage.cs" />
     <Compile Include="Models\Pages\LoginPage.cs" />
+    <Compile Include="Models\Pages\RegisterPage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
     <Compile Include="Models\Properties\PropertyListBase.cs" />
@@ -453,6 +455,8 @@
     <Compile Include="ViewModels\GadgetCommentsViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\Partial\ShoppingCartPartialViewModel.cs" />
+    <Compile Include="ViewModels\RegisterPagePostViewModel.cs" />
+    <Compile Include="ViewModels\RegisterPageViewModel.cs" />
     <Compile Include="ViewModels\SitePageViewModel.cs" />
     <Compile Include="ViewModels\Partial\TopLinksPartialViewModel.cs" />
   </ItemGroup>
@@ -828,6 +832,7 @@
     <None Include="Views\CheckoutPage\Index.cshtml" />
     <Content Include="Views\Shared\PagePartials\CheckoutOrderSummary.cshtml" />
     <Content Include="Views\Shared\PagePartials\CheckoutShippingMethods.cshtml" />
+    <None Include="Views\RegisterPage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -35,9 +35,12 @@
         <div class="col-xs-12 col-md-5">
             @Html.Action("TopLinksPartial")
         </div>
-        <div class="col-xs-12 col-md-2">
-            @Html.Action("ShoppingCartPartial")
-        </div>
+        @if (Model.ShowCart)
+        {
+            <div class="col-xs-12 col-md-2">
+                @Html.Action("ShoppingCartPartial")
+            </div>
+        }
     </header>
 </div>
 <div class="content">

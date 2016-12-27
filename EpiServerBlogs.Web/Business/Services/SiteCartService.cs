@@ -83,7 +83,7 @@ namespace EpiServerBlogs.Web.Business.Services
 
         public bool IsEmptyCart(ICart cart)
         {
-            return GetTotalCartQuantity(cart.Name) > 0;
+            return GetTotalCartQuantity(cart.Name) == 0;
         }
 
         public string DefaultCartName
