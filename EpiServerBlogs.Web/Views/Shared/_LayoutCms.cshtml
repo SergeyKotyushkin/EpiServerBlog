@@ -1,6 +1,7 @@
 ﻿@using System.Web.Optimization
 @using EpiServerBlogs.Web.ViewModels.Contracts
 @using EpiServerBlogs.Web.Models.Pages
+@using EPiServer.Core
 
 @model ISitePageViewModel<SitePageData>
 
@@ -31,6 +32,9 @@
     <header>
         <div class="col-xs-12 col-md-5 logo">
             <span>@Html.PropertyFor(m => m.CurrentPage.Header)</span>
+            <a href="@Url.ContentUrl(ContentReference.StartPage)">
+                <img src="~/Static/images/logo.png" alt="logo" />
+            </a>
         </div>
         <div class="col-xs-12 col-md-5">
             @Html.Action("TopLinksPartial")

@@ -149,3 +149,9 @@ label > input {
     font-size: 16px;
     font-style: italic;
 }
+
+header .logo img {
+    height: 150px;
+    border: 1px black dashed;
+    margin-top: 5px;
+}

@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization
+@using EPiServer.Core
 
 @model EpiServerBlogs.Web.ViewModels.Catalog.SiteCommerceViewModel
 
@@ -24,6 +25,9 @@
         <header>
             <div class="col-xs-12 col-md-5 logo">
                 <span>Commerce</span>
+                <a href="@Url.ContentUrl(ContentReference.StartPage)">
+                    <img src="~/Static/images/logo.png" alt="logo" />
+                </a>
             </div>
             <div class="col-xs-12 col-md-5">
                 @Html.Action("TopLinksPartial")
