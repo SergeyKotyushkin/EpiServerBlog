@@ -30,6 +30,9 @@ namespace EpiServerBlogs.Web.Controllers
             /* Implementation of action. You can create your own view model class that you pass to the view or
              * you can pass the page type for simpler templates */
 
+            if (!User.Identity.IsAuthenticated)
+                return Redirect(Url.ContentUrl(ContentReference.StartPage));
+
             var addressId = PrimaryKeyId.Empty;
             var queryAddressId = Request.QueryString["addressId"];
             if (queryAddressId != null)
