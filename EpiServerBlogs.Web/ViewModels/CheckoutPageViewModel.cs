@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EpiServerBlogs.Web.Business.Facades;
 using EpiServerBlogs.Web.Models.Catalog;
 using EpiServerBlogs.Web.Models.Pages;
 using EpiServerBlogs.Web.ViewModels.Checkout;
 using EPiServer;
+using EPiServer.Globalization;
 using Mediachase.Commerce.Catalog;
 using Mediachase.Commerce.Core;
+using Mediachase.Commerce.Customers;
 using Mediachase.Commerce.Orders;
 using Mediachase.Commerce.Orders.Dto;
 using Mediachase.Commerce.Orders.Managers;
@@ -24,9 +27,12 @@ namespace EpiServerBlogs.Web.ViewModels
 
         public CheckoutOrderSummaryViewModel OrderSummaryViewModel { get; set; }
 
+        public CheckoutAddressesViewModel AddressesViewModel { get; set; }
+
         public CheckoutPageViewModel(CheckoutPage currentPage, Cart cart, 
             IContentLoader contentRepository,
-            ReferenceConverter referenceConverter) : base(currentPage)
+            ReferenceConverter referenceConverter,
+            CustomerContextFacade customerContextFacade) : base(currentPage)
         {
             Cart = cart;
 
@@ -54,7 +60,9 @@ namespace EpiServerBlogs.Web.ViewModels
             };
 
             ShippingMethodsViewModel = new CheckoutShippingMethodsViewModel {ShippingRates = GetShippingMethods(cart)};
-            
+
+            AddressesViewModel = GetAddressesViewModel(customerContextFacade);
+
             OrderSummaryViewModel = new CheckoutOrderSummaryViewModel
             {
                 SubTotal = cart.SubTotal,
@@ -89,6 +97,48 @@ namespace EpiServerBlogs.Web.ViewModels
                 list.AddRange(shipments.Select(shipment => provider.GetRate(row.ShippingMethodId, shipment, ref message)));
             }
             return list.Where(s => s != null);
+        }
+
+        private static CheckoutAddressesViewModel GetAddressesViewModel(CustomerContextFacade customerContextFacade)
+        {
+            var preferedBillingAddress = customerContextFacade.CurrentContact.PreferredBillingAddress;
+            var preferedShippingAddress = customerContextFacade.CurrentContact.PreferredShippingAddress;
+            var addresses = customerContextFacade.CurrentContact.ContactAddresses.ToArray();
+            var model = new CheckoutAddressesViewModel
+            {
+                BillingAddresses =
+                    addresses.Where(a => a.AddressType == CustomerAddressTypeEnum.Billing)
+                        .Select(a => new CheckoutAddressViewModel
+                        {
+                            AddressId = a.AddressId,
+                            Name = a.Name,
+                            ContactInfo = string.Format("{0} {1}", a.FirstName, a.LastName),
+                            AddressInfo =
+                                string.Format("{0} {1} {2} {3} {4}", a.CountryName, a.State, a.City, a.Line1,
+                                    a.PostalCode),
+                            IsPrimary =
+                                preferedBillingAddress != null && preferedBillingAddress.AddressId.Equals(a.AddressId)
+                        }),
+                ShippingAddresses =
+                    addresses.Where(a => a.AddressType == CustomerAddressTypeEnum.Shipping)
+                        .Select(a => new CheckoutAddressViewModel
+                        {
+                            AddressId = a.AddressId,
+                            Name = a.Name,
+                            ContactInfo = string.Format("{0} {1}", a.FirstName, a.LastName),
+                            AddressInfo =
+                                string.Format("{0} {1} {2} {3} {4}", a.CountryName, a.State, a.City, a.Line1,
+                                    a.PostalCode),
+                            IsPrimary =
+                                preferedShippingAddress != null && preferedShippingAddress.AddressId.Equals(a.AddressId)
+                        })
+            };
+            model.SelectedBillingAddress =
+                model.BillingAddresses.FirstOrDefault(a => a.IsPrimary);
+            model.SelectedShippingAddress =
+                model.ShippingAddresses.FirstOrDefault(a => a.IsPrimary);
+
+            return model;
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Claims;
+using System.Web;
 using System.Web.Mvc;
 using EpiServerBlogs.Web.Business.Facades;
 using EpiServerBlogs.Web.Business.Services.Contracts;
@@ -35,14 +37,15 @@ namespace EpiServerBlogs.Web.Controllers
 
             var addresses = _customerContextFacade.CurrentContact.ContactAddresses.ToArray();
 
+            var emailClaim = ((ClaimsIdentity)User.Identity).Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email);
             var model = new AccountPageViewModel(currentPage)
             {
                 UserName = User.Identity.Name,
-                Email = _customerContextFacade.CurrentContact.ContactEmail,
+                Email = emailClaim == null ? string.Empty : emailClaim.Value,
                 BillingAddresses =
                     addresses.Where(a => a.AddressType == CustomerAddressTypeEnum.Billing)
                         .Select(a => new AddressViewModel(_customerContextFacade, _countryManagerFacade, a)),
-                ShippingAddresses = 
+                ShippingAddresses =
                     addresses.Where(a => a.AddressType == CustomerAddressTypeEnum.Shipping)
                         .Select(a => new AddressViewModel(_customerContextFacade, _countryManagerFacade, a))
             };

@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using EpiServerBlogs.Web.Business.Facades;
 using EpiServerBlogs.Web.Business.Services.Contracts;
 using EpiServerBlogs.Web.Models.Pages;
 using EpiServerBlogs.Web.ViewModels;
@@ -15,11 +16,13 @@ namespace EpiServerBlogs.Web.Controllers
         private readonly ISiteCartService _siteCartService;
         private readonly IContentRepository _contentRepository;
         private readonly ReferenceConverter _referenceConverter;
+        private readonly CustomerContextFacade _customerContextFacade;
 
-        public CheckoutPageController(ReferenceConverter referenceConverter, ISiteCartService siteCartService,
-            IContentRepository contentRepository) : base(siteCartService)
+        public CheckoutPageController(ReferenceConverter referenceConverter, CustomerContextFacade customerContextFacade,
+            ISiteCartService siteCartService, IContentRepository contentRepository) : base(siteCartService)
         {
             _referenceConverter = referenceConverter;
+            _customerContextFacade = customerContextFacade;
             _siteCartService = siteCartService;
             _contentRepository = contentRepository;
         }
@@ -33,7 +36,8 @@ namespace EpiServerBlogs.Web.Controllers
             if (_siteCartService.IsEmptyCart(cart))
                 return Redirect(Url.ContentUrl(ContentReference.StartPage));
 
-            var model = new CheckoutPageViewModel(currentPage, cart, _contentRepository, _referenceConverter);
+            var model = new CheckoutPageViewModel(currentPage, cart, _contentRepository, _referenceConverter,
+                _customerContextFacade);
             return View(model);
         }
 

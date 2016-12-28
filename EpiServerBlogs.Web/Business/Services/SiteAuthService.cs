@@ -80,7 +80,7 @@ namespace EpiServerBlogs.Web.Business.Services
         private static void SignIn(MembershipUser user)
         {
             var claim = new ClaimsIdentity("ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            claim.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Email, ClaimValueTypes.String));
+            claim.AddClaim(new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email));
             claim.AddClaim(new Claim(ClaimsIdentity.DefaultNameClaimType, user.UserName, ClaimValueTypes.String));
             claim.AddClaim(new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider",
                 "OWIN Provider", ClaimValueTypes.String));

@@ -454,9 +454,11 @@
     <Compile Include="ViewModels\Catalog\SiteCommerceViewModel.cs" />
     <Compile Include="ViewModels\Catalog\SiteCatalogProductViewModel.cs" />
     <Compile Include="ViewModels\CheckoutPageViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\CheckoutAddressViewModel.cs" />
     <Compile Include="ViewModels\Checkout\CheckoutCartItemsViewModel.cs" />
     <Compile Include="ViewModels\Checkout\CheckoutLineItemViewModel.cs" />
     <Compile Include="ViewModels\Checkout\CheckoutOrderSummaryViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\CheckoutAddressesViewModel.cs" />
     <Compile Include="ViewModels\Checkout\CheckoutShippingMethodsViewModel.cs" />
     <Compile Include="ViewModels\Contracts\ISitePageViewModel.cs" />
     <Compile Include="ViewModels\Dto\CommentDto.cs" />
@@ -845,6 +847,7 @@
     <Content Include="Views\Shared\PagePartials\CheckoutShippingMethods.cshtml" />
     <None Include="Views\RegisterPage\Index.cshtml" />
     <Content Include="Views\Shared\PagePartials\AccountAddress.cshtml" />
+    <Content Include="Views\Shared\PagePartials\CheckoutAddresses.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
