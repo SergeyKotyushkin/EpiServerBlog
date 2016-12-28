@@ -1,11 +1,35 @@
-﻿@model EpiServerBlogs.Web.ViewModels.AddressViewModel
+﻿@using EPiServer.Globalization
+@using Mediachase.Commerce.Customers
+@model EpiServerBlogs.Web.ViewModels.AddressViewModel
 
-<div class="panel">
+<div class="panel panel-address @(Model.IsDefaultBilling || Model.IsDefaultShipping ? "panel-default" : "highlight")">
+    @if (Model.IsDefaultBilling || Model.IsDefaultShipping)
+    {
+        <div class="panel-heading">
+            <span>@string.Format("This is a primary {0} address", Model.IsDefaultBilling ? "billing" : "shipping")</span>
+        </div>
+    }
     <div class="panel-body">
-        <b>@Model.Name</b><br/>
-        <span>@Model.FirstName&nbsp;@Model.LastName</span><br/>
-        <em>@Model.CountryName&nbsp;@Model.City&nbsp;@Model.Line1&nbsp;@Model.Line2&nbsp;@Model.PostalCode</em><br/>
-        <span>@Model.DaytimePhoneNumber</span><br/>
-        <span>@Model.Email</span><br/>
+        <div class="row">
+            <div class="col-xs-9">
+                <b>@Model.Name</b><br/>
+                <span>@Model.FirstName&nbsp;@Model.LastName</span><br/>
+                <em>@Model.CountryName&nbsp;@Model.City&nbsp;@Model.Line1&nbsp;@Model.Line2&nbsp;@Model.PostalCode</em><br/>
+                <span>@Model.DaytimePhoneNumber</span><br/>
+                <span>@Model.Email</span><br/>
+            </div>
+            <div class="col-xs-3 btn-group-vertical">
+                @Html.PageLink("Change", Model.AddressPageLink, new {addressId = Model.AddressId}, new {@class = "btn btn-default", title = "Change this address"})
+                @if (!Model.IsDefaultBilling && Model.AddressType == (int) CustomerAddressTypeEnum.Billing)
+                {
+                    @Html.ActionLink("Primary", null, null, new {language = ContentLanguage.PreferredCulture.Name, Action = "Primary", addressId = Model.AddressId}, new {@class = "btn btn-default", title = "Set as a primary billing address"})
+                }
+                @if (!Model.IsDefaultShipping && Model.AddressType == (int) CustomerAddressTypeEnum.Shipping)
+                {
+                    @Html.ActionLink("Primary", null, null, new {language = ContentLanguage.PreferredCulture.Name, Action = "Primary", addressId = Model.AddressId}, new {@class = "btn btn-default", title = "Set as a primary shipping address"})
+                }
+                @Html.ActionLink("Delete", null, null, new {language = ContentLanguage.PreferredCulture.Name, Action = "Delete", addressId = Model.AddressId}, new {@class = "btn btn-warning", title = "Delete this address", onclick="return confirm('Are you sure?')"})
+            </div>
+        </div>
     </div>
 </div>

@@ -22,12 +22,14 @@
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.AddressViewModel.CountryCode)
-                @Html.TextBoxFor(m => m.AddressViewModel.CountryCode, new {@class = "form-control", Name = "CountryCode"})
+                <br/>
+                @*@Html.TextBoxFor(m => m.AddressViewModel.CountryCode, new {@class = "form-control", Name = "CountryCode"})*@
+                @Html.DropDownList("CountryCode", Model.AddressViewModel.CountryCodes, new { @class = "form-control" })
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(m => m.AddressViewModel.CountryName)
                 @Html.TextBoxFor(m => m.AddressViewModel.CountryName, new {@class = "form-control", Name = "CountryName"})
-            </div>
+            </div>*@
             <div class="form-group">
                 @Html.LabelFor(m => m.AddressViewModel.FirstName)
                 @Html.TextBoxFor(m => m.AddressViewModel.FirstName, new {@class = "form-control", Name = "FirstName"})
@@ -73,13 +75,18 @@
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.AddressViewModel.AddressType)
+                <br/>
                 <span>&nbsp;</span>
                 <label>
-                    @Html.RadioButton("AddressType", (int) CustomerAddressTypeEnum.Billing)
+                    @(Model.AddressViewModel.AddressType == (int) CustomerAddressTypeEnum.Billing
+                          ? Html.RadioButton("AddressType", (int) CustomerAddressTypeEnum.Billing, new {@checked = true, @id = "AddressType.Billing"})
+                          : Html.RadioButton("AddressType", (int) CustomerAddressTypeEnum.Billing, new {@id = "AddressType.Billing"}))
                     <span>Billing</span>
                 </label>
                 <label>
-                    @Html.RadioButton("AddressType", (int) CustomerAddressTypeEnum.Shipping)
+                    @(Model.AddressViewModel.AddressType == (int) CustomerAddressTypeEnum.Shipping
+                          ? Html.RadioButton("AddressType", (int) CustomerAddressTypeEnum.Shipping, new {@checked = true, @id = "AddressType.Shipping"})
+                          : Html.RadioButton("AddressType", (int) CustomerAddressTypeEnum.Shipping, new {@id = "AddressType.Shipping"}))
                     <span>Shipping</span>
                 </label>
             </div>

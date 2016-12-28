@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Web.Mvc;
 using EpiServerBlogs.Web.Business.Facades;
-using Mediachase.BusinessFoundation.Data;
+using EpiServerBlogs.Web.Models.Pages;
+using EPiServer;
+using EPiServer.Core;
 using Mediachase.Commerce.Customers;
 
 namespace EpiServerBlogs.Web.ViewModels
@@ -11,22 +14,22 @@ namespace EpiServerBlogs.Web.ViewModels
         public AddressViewModel(CustomerContextFacade customerContextFacade, CountryManagerFacade countryManagerFacade,
             CustomerAddress address)
         {
-            var customerContextFacade1 = customerContextFacade;
+            var addressPage =
+                DataFactory.Instance.GetChildren<AddressPage>(ContentReference.StartPage).FirstOrDefault();
+
+            AddressPageLink = addressPage == null ? PageReference.EmptyReference : addressPage.PageLink;
 
             AddressId = address == null ? null : address.AddressId.ToString();
-            ContactId = customerContextFacade1.CurrentContactId.ToString();
+            ContactId = customerContextFacade.CurrentContactId.ToString();
+
+            CountryCodes = new SelectList(countryManagerFacade.GetCountries().Country.Select(c => c.Code));
 
             if(address == null)
                 return;
 
-            if (!address.AddressId.Equals(PrimaryKeyId.Empty))
-            {
-                AddressType = address.AddressType;
-
-                var contactId = address.ContactId ?? new PrimaryKeyId(customerContextFacade1.CurrentContactId);
-                ContactId = contactId.ToString();
-            }
-
+            IsDefaultBilling = customerContextFacade.CurrentContact.PreferredBillingAddressId.Equals(address.AddressId);
+            IsDefaultShipping = customerContextFacade.CurrentContact.PreferredShippingAddressId.Equals(address.AddressId);
+            
             Name = address.Name;
             City = address.City;
             CountryCode = address.CountryCode;
@@ -47,7 +50,7 @@ namespace EpiServerBlogs.Web.ViewModels
             // RegionName to avoid issues.
             State = address.RegionName;
             Email = address.Email;
-            AddressType = address.AddressType;
+            AddressType = (int) address.AddressType;
         }
 
         public AddressViewModel()
@@ -66,7 +69,9 @@ namespace EpiServerBlogs.Web.ViewModels
         [Display(Name = "Country Code", Prompt = "Country Code")]
         public string CountryCode { get; set; }
 
-        [Required(ErrorMessage = "Country Name is required")]
+        public SelectList CountryCodes { get; set; }
+
+        //[Required(ErrorMessage = "Country Name is required")]
         [Display(Name = "Country Name", Prompt = "Country Name")]
         public string CountryName { get; set; }
 
@@ -112,10 +117,16 @@ namespace EpiServerBlogs.Web.ViewModels
 
         [Required(ErrorMessage = "Address Type is required")]
         [Display(Name = "Address Type")]
-        public CustomerAddressTypeEnum? AddressType { get; set; }
+        public int? AddressType { get; set; }
 
-        public string AddressId { get; private set; }
+        public string AddressId { get; set; }
 
         public string ContactId { get; set; }
+
+        public bool IsDefaultBilling { get; private set; }
+
+        public bool IsDefaultShipping { get; private set; }
+
+        public PageReference AddressPageLink { get; set; }
     }
 }

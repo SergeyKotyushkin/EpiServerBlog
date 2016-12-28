@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using AuthorizeNet;
 using EpiServerBlogs.Web.Business.Facades;
 using EpiServerBlogs.Web.Business.Services.Contracts;
 using EpiServerBlogs.Web.Models.Pages;
 using EpiServerBlogs.Web.ViewModels;
+using EPiServer;
+using EPiServer.Core;
+using EPiServer.Web.Mvc.Html;
 using Mediachase.BusinessFoundation.Data;
 using Mediachase.Commerce.Customers;
 
@@ -49,16 +51,74 @@ namespace EpiServerBlogs.Web.Controllers
         [HttpPost]
         public ActionResult Index(AddressPage currentPage, AddressViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                var indexModel = new AddressPageViewModel(currentPage)
+                {
+                    AddressViewModel = model
+                };
+                return View(indexModel);
             }
-            
-            var indexModel = new AddressPageViewModel(currentPage)
+
+            bool isExists;
+            var address = GetAddress(model, out isExists);
+
+            if (isExists)
+                _customerContextFacade.CurrentContact.UpdateContactAddress(address);
+            else
+                _customerContextFacade.CurrentContact.AddContactAddress(address);
+
+            _customerContextFacade.CurrentContact.SaveChanges();
+
+            var accountPage = DataFactory.Instance.GetChildren<AccountPage>(ContentReference.StartPage).FirstOrDefault();
+            var pageLink = accountPage == null ? ContentReference.StartPage : accountPage.PageLink;
+
+            return Redirect(Url.ContentUrl(pageLink));
+        }
+
+        private CustomerAddress GetAddress(AddressViewModel model, out bool isExists)
+        {
+            CustomerAddress address = null;
+            Guid guid;
+            if (model.AddressId != null && Guid.TryParse(model.AddressId, out guid))
             {
-                AddressViewModel = model
-            };
-            return View(indexModel);
+                var addressId = new PrimaryKeyId(guid);
+
+                address =
+                    _customerContextFacade.CurrentContact.ContactAddresses.FirstOrDefault(
+                        a => a.AddressId.Equals(addressId));
+            }
+
+            isExists = true;
+            if (address == null)
+            {
+                address = CustomerAddress.CreateInstance();
+                isExists = false;
+            }
+
+            address.Name = model.Name;
+            address.City = model.City;
+            address.CountryCode = model.CountryCode;
+            address.CountryName =
+                _countryManagerFacade.GetCountries()
+                    .Country.Where(x => x.Code == model.CountryCode)
+                    .Select(x => x.Name)
+                    .FirstOrDefault();
+            address.FirstName = model.FirstName;
+            address.LastName = model.LastName;
+            address.Line1 = model.Line1;
+            address.Line2 = model.Line2;
+            address.DaytimePhoneNumber = model.DaytimePhoneNumber;
+            address.PostalCode = model.PostalCode;
+            address.RegionName = model.RegionName;
+            address.RegionCode = model.RegionCode;
+            // Commerce Manager expects State to be set for addresses in order management. Set it to be same as
+            // RegionName to avoid issues.
+            address.State = model.RegionName;
+            address.Email = model.Email;
+            address.AddressType = (CustomerAddressTypeEnum) (model.AddressType ?? (int) CustomerAddressTypeEnum.Billing);
+
+            return address;
         }
     }
 }

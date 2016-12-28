@@ -133,3 +133,19 @@ label > input {
     margin-top: 5px;
     font-weight: normal;
 }
+
+.panel-address.highlight {
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.panel-address .btn {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.panel-address .panel-heading {
+    font-size: 16px;
+    font-style: italic;
+}
