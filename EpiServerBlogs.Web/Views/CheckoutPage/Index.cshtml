@@ -1,0 +1,53 @@
+﻿@model EpiServerBlogs.Web.ViewModels.CheckoutPageViewModel
+
+<h2>Checkout</h2>
+
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm(null, null, new {Action = "PlaceOrder"}, FormMethod.Post))
+        {
+            <input type="submit" value="Place Order" class="btn btn-primary"/>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-8">
+        <div class="row">
+            <div class="col-xs-12">
+                <div>
+                    <h3>Cart Items</h3>
+                    @Html.Partial("PagePartials/CheckoutCartItems", Model.CartItemsViewModel)
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div>
+                    <h3>Shipping Methods</h3>
+                    @Html.Partial("PagePartials/CheckoutShippingMethods", Model.ShippingMethodsViewModel)
+                </div>
+                <hr/>
+            </div>
+            <div class="col-xs-12">
+                <div>
+                    <h3>Addresses</h3>
+                    @Html.Partial("PagePartials/CheckoutAddresses", Model.AddressesViewModel)
+                </div>
+                <hr/>
+            </div>
+            <div class="col-xs-12">
+                <div>
+                    <h3>Payment Methods</h3>
+                    @Html.Partial("PagePartials/CheckoutShippingMethods", Model.ShippingMethodsViewModel)
+                </div>
+                <hr/>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Order Summary</h3>
+                @Html.Partial("PagePartials/CheckoutOrderSummary", Model.OrderSummaryViewModel)
+            </div>
+        </div>
+    </div>
+</div>

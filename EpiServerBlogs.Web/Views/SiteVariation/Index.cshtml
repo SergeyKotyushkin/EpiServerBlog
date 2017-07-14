@@ -1,0 +1,44 @@
+﻿@model EpiServerBlogs.Web.ViewModels.Catalog.SiteCommerceViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutCommerce.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1>@Html.PropertyFor(m => m.Variation.Name)</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-5">
+        <div class="fitted-image-wrapper">@Html.PropertyFor(m => m.Variation.ImageLink)</div>
+    </div>
+    <div class="col-md-7">
+        @using (Html.BeginForm("AddToCart", "SiteVariation", "POST"))
+        {
+            <div>
+                @if (Model.Variation.ShowPrice)
+            {
+                    <h3>Price:&nbsp;@Model.Variation.Price</h3>
+            }
+            </div>
+            <div>
+                <h3>Inventory:&nbsp;@Model.Variation.InventoryQuantity</h3>
+            </div>
+            <div>
+                @if (Model.Variation.ShowAddToCart)
+                {
+                    @Html.HiddenFor(m => m.Variation.Code, new {Name = "code"})
+                    <button type="submit" class="btn btn-primary">Add To Cart</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+<div class="row description">
+    <div class="col-xs-12">
+        <div class="highlight">
+            @Html.PropertyFor(m => m.Variation.Description)
+        </div>
+    </div>
+</div>

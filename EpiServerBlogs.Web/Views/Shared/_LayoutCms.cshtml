@@ -1,0 +1,61 @@
+﻿@using System.Web.Optimization
+@using EpiServerBlogs.Web.ViewModels.Contracts
+@using EpiServerBlogs.Web.Models.Pages
+@using EPiServer.Core
+
+@model ISitePageViewModel<SitePageData>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=10"/>
+    <meta name="viewport" content="width=device-width"/>
+
+    <title>@Model.CurrentPage.MetaTitle</title>
+
+    @if (Model.CurrentPage.Favicon != null)
+    {
+        <link rel="shortcut icon" href="@Url.ContentUrl(Model.CurrentPage.Favicon)"/>
+    }
+
+    @Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/js")
+</head>
+<body class="container-fluid">
+<div class="row">
+    <header>
+        <div class="col-xs-12 col-md-5 logo">
+            <span>@Html.PropertyFor(m => m.CurrentPage.Header)</span>
+            <a href="@Url.ContentUrl(ContentReference.StartPage)">
+                <img src="~/Static/images/logo.png" alt="logo" />
+            </a>
+        </div>
+        <div class="col-xs-12 col-md-5">
+            @Html.Action("TopLinksPartial")
+        </div>
+        @if (Model.ShowCart)
+        {
+            <div class="col-xs-12 col-md-2">
+                @Html.Action("ShoppingCartPartial")
+            </div>
+        }
+    </header>
+</div>
+<div class="content">
+    @RenderBody()
+</div>
+<div class="row">
+    <footer>
+        <div class="col-xs-6 logo">
+            <span>Footer</span>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

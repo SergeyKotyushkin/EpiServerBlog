@@ -1,0 +1,37 @@
+﻿@model EpiServerBlogs.Web.ViewModels.Catalog.SiteCommerceViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutCommerce.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1>@Html.PropertyFor(m => m.Product.Name)</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="fitted-image-wrapper">@Html.PropertyFor(m => m.Product.ImageLink)</div>
+    </div>
+    <div class="col-md-7">
+        <div class="row">
+            @foreach (var variation in Model.Product.Variations)
+            {
+                var currentVariation = variation;
+                <div class="col-xs-4 col-sm-3 col-md-2">
+                    <div class="variation-mini fitted-image-wrapper" title="@currentVariation.Name">
+                        <a href="@Url.ContentUrl(currentVariation.Url)">@Html.PropertyFor(m => currentVariation.ImageLink)</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="row description">
+    <div class="col-xs-12">
+        <div class="highlight">
+            @Html.PropertyFor(m => m.Product.Description)
+        </div>
+    </div>
+</div>

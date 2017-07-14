@@ -1,0 +1,33 @@
+﻿@model EpiServerBlogs.Web.ViewModels.Checkout.CheckoutCartItemsViewModel
+
+<div class="row">
+    @foreach (var lineItem in Model.ListItems)
+    {
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="fitted-image-wrapper">
+                        <img src="@Url.ContentUrl(lineItem.VariationImageLink)" class="checkout-variation-mini" alt="image"/>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <h4>
+                        <a href="@Url.ContentUrl(lineItem.VariationLink)">@lineItem.VariationDisplayName</a>
+                    </h4>
+                    <em>
+                        <b>Price:</b>&nbsp;@lineItem.DisplayPlacedPrice
+                    </em>
+                    <br/>
+                    <em>
+                        <b>Quantity:</b>&nbsp;@lineItem.Quantity
+                    </em>
+                    <br/>
+                    <em>
+                        <b>Total Price:</b>&nbsp;@lineItem.DisplayExtendedPrice
+                    </em>
+                </div>
+            </div>
+            <hr/>
+        </div>
+    }
+</div>

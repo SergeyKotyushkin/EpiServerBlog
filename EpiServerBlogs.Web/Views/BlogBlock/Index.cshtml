@@ -1,0 +1,20 @@
+﻿@model EpiServerBlogs.Web.Models.Blocks.BlogBlock
+
+<div class="col-xs-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="panel-title blog-header">@Model.BlogHeader</span>
+            <br/>
+            <span class="blog-author">(@Model.BlogAuthor)</span>
+        </div>
+
+        <!-- List group -->
+        @Html.PropertyFor(m => m.ArticlesContentArea, new
+        {
+            Customtag = "ul", 
+            CssClass = "list-group",
+            ChildrenCustomTagName = "li", 
+            ChildrenCssClass = "list-group-item"
+        })
+    </div>
+</div>

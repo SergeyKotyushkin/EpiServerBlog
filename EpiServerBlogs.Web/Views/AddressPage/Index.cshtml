@@ -1,0 +1,103 @@
+﻿@using Mediachase.Commerce.Customers
+@model EpiServerBlogs.Web.ViewModels.AddressPageViewModel
+
+
+<h2>Address</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+
+    <div class="row">
+        <div class="col-xs-12">
+            @Html.ValidationSummary()
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.Name)
+                @Html.TextBoxFor(m => m.AddressViewModel.Name, new {@class = "form-control", Name = "Name"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.City)
+                @Html.TextBoxFor(m => m.AddressViewModel.City, new {@class = "form-control", Name = "City"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.CountryCode)
+                <br/>
+                @*@Html.TextBoxFor(m => m.AddressViewModel.CountryCode, new {@class = "form-control", Name = "CountryCode"})*@
+                @Html.DropDownList("CountryCode", Model.AddressViewModel.CountryCodes, new { @class = "form-control" })
+            </div>
+            @*<div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.CountryName)
+                @Html.TextBoxFor(m => m.AddressViewModel.CountryName, new {@class = "form-control", Name = "CountryName"})
+            </div>*@
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.FirstName)
+                @Html.TextBoxFor(m => m.AddressViewModel.FirstName, new {@class = "form-control", Name = "FirstName"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.LastName)
+                @Html.TextBoxFor(m => m.AddressViewModel.LastName, new {@class = "form-control", Name = "LastName"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.Line1)
+                @Html.TextBoxFor(m => m.AddressViewModel.Line1, new {@class = "form-control", Name = "Line1"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.Line2)
+                @Html.TextBoxFor(m => m.AddressViewModel.Line2, new {@class = "form-control", Name = "Line2"})
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.DaytimePhoneNumber)
+                @Html.TextBoxFor(m => m.AddressViewModel.DaytimePhoneNumber, new {@class = "form-control", Name = "DaytimePhoneNumber"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.PostalCode)
+                @Html.TextBoxFor(m => m.AddressViewModel.PostalCode, new {@class = "form-control", Name = "PostalCode"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.RegionName)
+                @Html.TextBoxFor(m => m.AddressViewModel.RegionName, new {@class = "form-control", Name = "RegionName"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.RegionCode)
+                @Html.TextBoxFor(m => m.AddressViewModel.RegionCode, new {@class = "form-control", Name = "RegionCode"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.State)
+                @Html.TextBoxFor(m => m.AddressViewModel.State, new {@class = "form-control", Name = "State"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.Email)
+                @Html.TextBoxFor(m => m.AddressViewModel.Email, new {@class = "form-control", Name = "Email"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.AddressViewModel.AddressType)
+                <br/>
+                <span>&nbsp;</span>
+                <label>
+                    @(Model.AddressViewModel.AddressType == (int) CustomerAddressTypeEnum.Billing
+                          ? Html.RadioButton("AddressType", (int) CustomerAddressTypeEnum.Billing, new {@checked = true, @id = "AddressType.Billing"})
+                          : Html.RadioButton("AddressType", (int) CustomerAddressTypeEnum.Billing, new {@id = "AddressType.Billing"}))
+                    <span>Billing</span>
+                </label>
+                <label>
+                    @(Model.AddressViewModel.AddressType == (int) CustomerAddressTypeEnum.Shipping
+                          ? Html.RadioButton("AddressType", (int) CustomerAddressTypeEnum.Shipping, new {@checked = true, @id = "AddressType.Shipping"})
+                          : Html.RadioButton("AddressType", (int) CustomerAddressTypeEnum.Shipping, new {@id = "AddressType.Shipping"}))
+                    <span>Shipping</span>
+                </label>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            @Html.HiddenFor(m => m.AddressViewModel.AddressId, new {Name = "AddressId"})
+            @Html.HiddenFor(m => m.AddressViewModel.ContactId, new {Name = "ContactId"})
+            <div class="btn-group">
+                <input type="submit" value="Submit" class="btn btn-primary"/>
+                @Html.PageLink("Cancel", Model.AccountPageLink, null, new {@class = "btn btn-default", onclick = "return confirm('Are you sure?')"})
+            </div>
+        </div>
+    </div>
+}

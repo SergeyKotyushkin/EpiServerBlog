@@ -1,0 +1,11 @@
+﻿.stringListEditor-values {
+    display: inline;
+}
+
+.stringListEditor .epi-categoryButton {
+    padding: 0 5px 4px 0;
+}
+
+.stringListEditor .help {
+    color: #666;
+}

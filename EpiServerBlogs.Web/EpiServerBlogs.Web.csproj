@@ -1,0 +1,883 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{97E3FAD5-28D4-4066-BEA8-50C5524AB300}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EpiServerBlogs.Web</RootNamespace>
+    <AssemblyName>EpiServerBlogs.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>true</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.30930.28736, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AuthorizeNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AuthorizeNet.1.8.10\lib\AuthorizeNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.10.0.1\lib\net45\EPiServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.ApplicationModules, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.10.0.1\lib\net45\EPiServer.ApplicationModules.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Business.Commerce, Version=10.1.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\EPiServer.Business.Commerce.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Cms.Shell.UI, Version=10.0.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.10.0.2\lib\net45\EPiServer.Cms.Shell.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Commerce.Internal.Migration, Version=10.1.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\EPiServer.Commerce.Internal.Migration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Commerce.Shell, Version=10.1.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.UI.10.1.1\lib\net45\EPiServer.Commerce.Shell.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Commerce.Shell.ManagerIntegration, Version=10.1.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.UI.ManagerIntegration.10.1.1\lib\net45\EPiServer.Commerce.Shell.ManagerIntegration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Commerce.UI, Version=10.1.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.UI.10.1.1\lib\net45\EPiServer.Commerce.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Configuration, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.10.0.1\lib\net45\EPiServer.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Data, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.10.0.1\lib\net45\EPiServer.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Data.Cache, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.10.0.1\lib\net45\EPiServer.Data.Cache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Enterprise, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.10.0.1\lib\net45\EPiServer.Enterprise.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Events, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.10.0.1\lib\net45\EPiServer.Events.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Framework, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.10.0.1\lib\net45\EPiServer.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.ImageLibrary, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.10.0.1\lib\net45\EPiServer.ImageLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Licensing, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.10.0.1\lib\net45\EPiServer.Licensing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.LinkAnalyzer, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.10.0.1\lib\net45\EPiServer.LinkAnalyzer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Logging.Log4Net, Version=2.1.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Logging.Log4Net.2.1.0\lib\net45\EPiServer.Logging.Log4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Packaging, Version=3.3.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Packaging.3.3.0\lib\net45\EPiServer.Packaging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Packaging.CmdAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Packaging.3.3.0\lib\net45\EPiServer.Packaging.CmdAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Packaging.UI, Version=3.3.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Packaging.UI.3.3.0\lib\net45\EPiServer.Packaging.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Shell, Version=10.0.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.10.0.2\lib\net45\EPiServer.Shell.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Shell.UI, Version=10.0.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.10.0.2\lib\net45\EPiServer.Shell.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.UI, Version=10.0.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.10.0.2\lib\net45\EPiServer.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Web.WebControls, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.10.0.1\lib\net45\EPiServer.Web.WebControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.XForms, Version=10.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.10.0.1\lib\net45\EPiServer.XForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.3.0.3\lib\NET40\Lucene.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.BusinessFoundation, Version=10.1.1.0, Culture=neutral, PublicKeyToken=41d2e7a615ba286c, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.BusinessFoundation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.BusinessFoundation.Data, Version=10.1.1.0, Culture=neutral, PublicKeyToken=41d2e7a615ba286c, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.BusinessFoundation.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.Commerce, Version=10.1.1.0, Culture=neutral, PublicKeyToken=6e58b501b34abce3, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.Commerce.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.Commerce.Marketing.Validators, Version=10.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.Commerce.Marketing.Validators.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.Commerce.Plugins.Payment, Version=10.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.Commerce.Plugins.Payment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.Commerce.Plugins.Shipping, Version=10.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.Commerce.Plugins.Shipping.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.Commerce.Website, Version=10.1.1.0, Culture=neutral, PublicKeyToken=6e58b501b34abce3, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.Commerce.Website.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.Commerce.Workflow, Version=10.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.Commerce.Workflow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.DataProvider, Version=10.1.1.0, Culture=neutral, PublicKeyToken=41d2e7a615ba286c, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.DataProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.FileUploader, Version=10.1.1.0, Culture=neutral, PublicKeyToken=41d2e7a615ba286c, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.FileUploader.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.MetaDataPlus, Version=10.1.1.0, Culture=neutral, PublicKeyToken=41d2e7a615ba286c, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.MetaDataPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.Search, Version=10.1.1.0, Culture=neutral, PublicKeyToken=6e58b501b34abce3, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.Search.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.Search.Extensions, Version=10.1.1.0, Culture=neutral, PublicKeyToken=6e58b501b34abce3, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.Search.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.Search.LuceneSearchProvider, Version=10.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.Search.LuceneSearchProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.SqlDataProvider, Version=10.1.1.0, Culture=neutral, PublicKeyToken=41d2e7a615ba286c, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.SqlDataProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mediachase.WebConsoleLib, Version=10.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\Mediachase.WebConsoleLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WebForms.10.0.40219.1\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nsoftware.IBizPay, Version=4.1.3575.0, Culture=neutral, PublicKeyToken=cdc168f89cffe9cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Commerce.Core.10.1.1\lib\net45\nsoftware.IBizPay.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=2.5.40416.9020, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Core.2.5.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap, Version=3.1.6.186, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap-signed.3.1.6.186\lib\net40\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=3.1.6.186, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap-signed.3.1.6.186\lib\net40\StructureMap.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.web-signed.3.1.6.186\lib\net40\StructureMap.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ItemGroup>
+    <Compile Include="Business\EditorDescriptors\FaviconEditorDescriptor.cs" />
+    <Compile Include="Business\EditorDescriptors\ImageEditorDescriptor.cs" />
+    <Compile Include="Business\EditorDescriptors\StringsEditorDescriptor.cs" />
+    <Compile Include="Business\Extensions\DecimalExtensions.cs" />
+    <Compile Include="Business\Extensions\SiteProductContentExtensions.cs" />
+    <Compile Include="Business\Facades\AppContextFacade.cs" />
+    <Compile Include="Business\Facades\CountryManagerFacade.cs" />
+    <Compile Include="Business\Facades\CurrentContactFacade.cs" />
+    <Compile Include="Business\Facades\CustomerContextFacade.cs" />
+    <Compile Include="Business\Owin\Startup.cs" />
+    <Compile Include="Business\Services\Contracts\ISiteAuthService.cs" />
+    <Compile Include="Business\Services\Contracts\ISiteCartService.cs" />
+    <Compile Include="Business\Services\Contracts\ISitePriceService.cs" />
+    <Compile Include="Business\Services\SiteAuthService.cs" />
+    <Compile Include="Business\Services\SiteCartService.cs" />
+    <Compile Include="Business\ImageRepository\ExtendedThumbnailManager.cs" />
+    <Compile Include="Business\ImageRepository\ImageScaleDescriptorAttribute.cs" />
+    <Compile Include="Business\ImageRepository\ImageScaleType.cs" />
+    <Compile Include="Business\Initialization\BundleConfig.cs" />
+    <Compile Include="Business\Initialization\DependencyInjectionInit.cs" />
+    <Compile Include="Business\SelectionFactories\BlockSelectionFactory.cs" />
+    <Compile Include="Business\Services\SitePriceService.cs" />
+    <Compile Include="Business\StructureMapDependencyResolver.cs" />
+    <Compile Include="Controllers\AddressPageController.cs" />
+    <Compile Include="Controllers\ArticlePageController.cs" />
+    <Compile Include="Controllers\ArticlePagePartialController.cs" />
+    <Compile Include="Controllers\BlogBlockController.cs" />
+    <Compile Include="Controllers\Catalog\ContentControllerBase.cs" />
+    <Compile Include="Controllers\Catalog\SiteCatalogController.cs" />
+    <Compile Include="Controllers\Catalog\SiteVariationController.cs" />
+    <Compile Include="Controllers\Catalog\SiteProductController.cs" />
+    <Compile Include="Controllers\CheckoutPageController.cs" />
+    <Compile Include="Controllers\AccountPageController.cs" />
+    <Compile Include="Controllers\RegisterPageController.cs" />
+    <Compile Include="Controllers\LoginPageController.cs" />
+    <Compile Include="Controllers\PageControllerBase.cs" />
+    <Compile Include="Controllers\StartPageController.cs" />
+    <Compile Include="Gadgets\GadgetCommetsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="Infrastructure\InitializationModule.cs" />
+    <Compile Include="Jobs\ScheduledJobBadWords.cs" />
+    <Compile Include="Models\Blocks\BlogBlock.cs" />
+    <Compile Include="Models\Catalog\SiteCatalogContent.cs" />
+    <Compile Include="Models\Catalog\SiteProductContent.cs" />
+    <Compile Include="Models\Catalog\SiteVariationContent.cs" />
+    <Compile Include="Models\Data\ArticleComments.cs" />
+    <Compile Include="Models\DynamicData\Comment.cs" />
+    <Compile Include="Models\Media\ImageFile.cs" />
+    <Compile Include="Models\Pages\AccountPage.cs" />
+    <Compile Include="Models\Pages\AddressPage.cs" />
+    <Compile Include="Models\Pages\ArticlePage.cs" />
+    <Compile Include="Models\Pages\CheckoutPage.cs" />
+    <Compile Include="Models\Pages\LoginPage.cs" />
+    <Compile Include="Models\Pages\RegisterPage.cs" />
+    <Compile Include="Models\Pages\SitePageData.cs" />
+    <Compile Include="Models\Pages\StartPage.cs" />
+    <Compile Include="Models\Properties\PropertyListBase.cs" />
+    <Compile Include="Models\Properties\PropertyStrings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AddressViewModel.cs" />
+    <Compile Include="ViewModels\AddressPageViewModel.cs" />
+    <Compile Include="ViewModels\AccountPageViewModel.cs" />
+    <Compile Include="ViewModels\ArticlePageViewModel.cs" />
+    <Compile Include="ViewModels\Catalog\SiteProductVariationViewModel.cs" />
+    <Compile Include="ViewModels\Catalog\SiteVariationViewModel.cs" />
+    <Compile Include="ViewModels\Catalog\SiteProductViewModel.cs" />
+    <Compile Include="ViewModels\Catalog\SiteSubCatalogViewModel.cs" />
+    <Compile Include="ViewModels\Catalog\SiteCatalogViewModel.cs" />
+    <Compile Include="ViewModels\Catalog\SiteCommerceViewModel.cs" />
+    <Compile Include="ViewModels\Catalog\SiteCatalogProductViewModel.cs" />
+    <Compile Include="ViewModels\CheckoutPageViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\CheckoutAddressViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\CheckoutCartItemsViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\CheckoutLineItemViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\CheckoutOrderSummaryViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\CheckoutAddressesViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\CheckoutShippingMethodsViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\ISitePageViewModel.cs" />
+    <Compile Include="ViewModels\Dto\CommentDto.cs" />
+    <Compile Include="ViewModels\GadgetCommentsViewModel.cs" />
+    <Compile Include="ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="ViewModels\Partial\ShoppingCartPartialViewModel.cs" />
+    <Compile Include="ViewModels\RegisterPagePostViewModel.cs" />
+    <Compile Include="ViewModels\RegisterPageViewModel.cs" />
+    <Compile Include="ViewModels\SitePageViewModel.cs" />
+    <Compile Include="ViewModels\Partial\TopLinksPartialViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EpiServerBlogs.Logic\EpiServerBlogs.Logic.csproj">
+      <Project>{9F03E45D-122E-4254-893B-FA088C26BA1B}</Project>
+      <Name>EpiServerBlogs.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClientResources\Editors\ImageContentSelector.js" />
+    <Content Include="ClientResources\Editors\stringlist\Editor.js" />
+    <Content Include="ClientResources\Editors\stringlist\nls\Labels.js" />
+    <Content Include="ClientResources\Editors\stringlist\Template.css" />
+    <Content Include="ClientResources\Editors\stringlist\Template.html" />
+    <Content Include="Static\css\bootstrap.min.css" />
+    <Content Include="Static\css\font-awesome.min.css" />
+    <Content Include="Static\css\style.css" />
+    <Content Include="Static\images\logo.png" />
+    <Content Include="Static\js\bootstrap.min.js" />
+    <Content Include="Static\js\ckeditor\adapters\jquery.js" />
+    <Content Include="Static\js\ckeditor\build-config.js" />
+    <Content Include="Static\js\ckeditor\ckeditor.js" />
+    <Content Include="Static\js\ckeditor\config.js" />
+    <Content Include="Static\js\ckeditor\contents.css" />
+    <Content Include="Static\js\ckeditor\lang\en.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\de-ch.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="Static\js\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Static\js\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Static\js\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Static\js\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Static\js\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Static\js\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Static\js\ckeditor\plugins\icons.png" />
+    <Content Include="Static\js\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="Static\js\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Static\js\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Static\js\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Static\js\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Static\js\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Static\js\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Static\js\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="Static\js\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Static\js\ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="Static\js\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Static\js\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Static\js\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Static\js\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\dialogs\smiley.js" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\angel_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\angry_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\broken_heart.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\confused_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\cry_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\devil_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\embarrassed_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\embarrassed_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\envelope.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\envelope.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\heart.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\heart.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\kiss.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\kiss.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\lightbulb.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\omg_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\regular_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\sad_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\shades_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\teeth_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\thumbs_down.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\thumbs_up.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\tongue_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\tongue_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\whatchutalkingabout_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="Static\js\ckeditor\plugins\smiley\images\wink_smile.png" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Static\js\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Static\js\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Static\js\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Static\js\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Static\js\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Static\js\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Static\js\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Static\js\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="Static\js\ckeditor\samples\css\samples.css" />
+    <Content Include="Static\js\ckeditor\samples\img\github-top.png" />
+    <Content Include="Static\js\ckeditor\samples\img\header-bg.png" />
+    <Content Include="Static\js\ckeditor\samples\img\header-separator.png" />
+    <Content Include="Static\js\ckeditor\samples\img\logo.png" />
+    <Content Include="Static\js\ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="Static\js\ckeditor\samples\index.html" />
+    <Content Include="Static\js\ckeditor\samples\js\sample.js" />
+    <Content Include="Static\js\ckeditor\samples\js\sf.js" />
+    <Content Include="Static\js\ckeditor\samples\old\ajax.html" />
+    <Content Include="Static\js\ckeditor\samples\old\api.html" />
+    <Content Include="Static\js\ckeditor\samples\old\appendto.html" />
+    <Content Include="Static\js\ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="Static\js\ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Static\js\ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="Static\js\ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="Static\js\ckeditor\samples\old\autogrow\autogrow.html" />
+    <Content Include="Static\js\ckeditor\samples\old\bbcode\bbcode.html" />
+    <Content Include="Static\js\ckeditor\samples\old\datafiltering.html" />
+    <Content Include="Static\js\ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="Static\js\ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="Static\js\ckeditor\samples\old\divreplace.html" />
+    <Content Include="Static\js\ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="Static\js\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="Static\js\ckeditor\samples\old\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Static\js\ckeditor\samples\old\htmlwriter\outputforflash.html" />
+    <Content Include="Static\js\ckeditor\samples\old\htmlwriter\outputhtml.html" />
+    <Content Include="Static\js\ckeditor\samples\old\index.html" />
+    <Content Include="Static\js\ckeditor\samples\old\inlineall.html" />
+    <Content Include="Static\js\ckeditor\samples\old\inlinebycode.html" />
+    <Content Include="Static\js\ckeditor\samples\old\inlinetextarea.html" />
+    <Content Include="Static\js\ckeditor\samples\old\jquery.html" />
+    <Content Include="Static\js\ckeditor\samples\old\magicline\magicline.html" />
+    <Content Include="Static\js\ckeditor\samples\old\readonly.html" />
+    <Content Include="Static\js\ckeditor\samples\old\replacebyclass.html" />
+    <Content Include="Static\js\ckeditor\samples\old\replacebycode.html" />
+    <Content Include="Static\js\ckeditor\samples\old\sample.css" />
+    <Content Include="Static\js\ckeditor\samples\old\sample.js" />
+    <Content Include="Static\js\ckeditor\samples\old\tabindex.html" />
+    <Content Include="Static\js\ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="Static\js\ckeditor\samples\old\uicolor.html" />
+    <Content Include="Static\js\ckeditor\samples\old\uilanguages.html" />
+    <Content Include="Static\js\ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="Static\js\ckeditor\samples\old\xhtmlstyle.html" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\index.html" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="Static\js\ckeditor\skins\moono\dialog.css" />
+    <Content Include="Static\js\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="Static\js\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="Static\js\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="Static\js\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="Static\js\ckeditor\skins\moono\editor.css" />
+    <Content Include="Static\js\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="Static\js\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="Static\js\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="Static\js\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="Static\js\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="Static\js\ckeditor\skins\moono\icons.png" />
+    <Content Include="Static\js\ckeditor\skins\moono\icons_hidpi.png" />
+    <Content Include="Static\js\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="Static\js\ckeditor\skins\moono\images\close.png" />
+    <Content Include="Static\js\ckeditor\skins\moono\images\hidpi\close.png" />
+    <Content Include="Static\js\ckeditor\skins\moono\images\hidpi\lock-open.png" />
+    <Content Include="Static\js\ckeditor\skins\moono\images\hidpi\lock.png" />
+    <Content Include="Static\js\ckeditor\skins\moono\images\hidpi\refresh.png" />
+    <Content Include="Static\js\ckeditor\skins\moono\images\lock-open.png" />
+    <Content Include="Static\js\ckeditor\skins\moono\images\lock.png" />
+    <Content Include="Static\js\ckeditor\skins\moono\images\refresh.png" />
+    <Content Include="Static\js\ckeditor\skins\moono\images\spinner.gif" />
+    <Content Include="Static\js\ckeditor\styles.js" />
+    <Content Include="Static\js\article.js" />
+    <Content Include="Static\js\gadget-comments.js" />
+    <Content Include="Static\js\jquery-2.2.3.min.js" />
+    <Content Include="Static\js\knockout-3.4.0.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\GeoLiteCity.dat" />
+    <Content Include="Configs\baf.config" />
+    <Content Include="Configs\baf.data.manager.config" />
+    <Content Include="Configs\baf.data.metaobject.config" />
+    <Content Include="Configs\baf.library.folders.config" />
+    <Content Include="Configs\ecf.app.config" />
+    <Content Include="Configs\ecf.asset.config" />
+    <Content Include="Configs\ecf.catalog.config" />
+    <Content Include="Configs\ecf.customer.config" />
+    <Content Include="Configs\ecf.customization.config" />
+    <Content Include="Configs\ecf.marketing.config" />
+    <Content Include="Configs\ecf.order.config" />
+    <Content Include="Configs\ecf.security.config" />
+    <Content Include="Configs\ecf.ssl.config" />
+    <Content Include="Configs\Mediachase.Search.config" />
+    <None Include="EPiServerLog.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="modules\_protected\Shell\web.config" />
+    <Content Include="modules\_protected\Shell\Shell.zip" />
+    <Content Include="modules\_protected\CMS\web.config" />
+    <Content Include="modules\_protected\CMS\CMS.zip" />
+    <Content Include="modules\_protected\EPiServer.Packaging.UI\web.config" />
+    <Content Include="modules\_protected\EPiServer.Packaging.UI\EPiServer.Packaging.UI.zip" />
+    <Content Include="Views\Shared\_LayoutCms.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\StartPage\Index.cshtml" />
+    <Content Include="Static\css\bootstrap.min.css.map" />
+    <Content Include="Views\BlogBlock\Index.cshtml" />
+    <Content Include="Views\Shared\PagePartials\ArticlePage.cshtml" />
+    <Content Include="Views\ArticlePage\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MediaFile.cshtml" />
+    <Content Include="module.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Static\js\ckeditor\CHANGES.md" />
+    <Content Include="Static\js\ckeditor\LICENSE.md" />
+    <Content Include="Static\js\ckeditor\plugins\scayt\CHANGELOG.md" />
+    <Content Include="Static\js\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="Static\js\ckeditor\plugins\scayt\README.md" />
+    <Content Include="Static\js\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="Static\js\ckeditor\plugins\wsc\README.md" />
+    <Content Include="Static\js\ckeditor\README.md" />
+    <Content Include="Static\js\ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="Static\js\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="Static\js\ckeditor\samples\old\sample_posteddata.php" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="Static\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="Static\js\ckeditor\skins\moono\readme.md" />
+    <Content Include="Views\GadgetCommets\Index.cshtml" />
+    <Content Include="modules\_protected\EPiServer.Commerce.Shell\EPiServer.Commerce.Shell.zip" />
+    <Content Include="modules\_protected\Commerce\Commerce.zip" />
+    <Content Include="modules\_protected\EPiServer.Commerce.Shell.ManagerIntegration\EPiServer.Commerce.Shell.ManagerIntegration.zip" />
+    <Content Include="Views\Shared\_LayoutCommerce.cshtml" />
+    <Content Include="Views\SiteCatalog\Index.cshtml" />
+    <Content Include="Views\SiteProduct\Index.cshtml" />
+    <Content Include="Views\SiteVariation\Index.cshtml" />
+    <Content Include="Views\LoginPage\Index.cshtml" />
+    <Content Include="Views\Shared\PagePartials\TopLinksPartial.cshtml" />
+    <Content Include="Views\Shared\PagePartials\ShoppingCartPartial.cshtml" />
+    <Content Include="Static\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Static\fonts\fontawesome-webfont.woff" />
+    <Content Include="Static\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Views\Shared\PagePartials\CheckoutCartItems.cshtml" />
+    <None Include="Views\AccountPage\Index.cshtml" />
+    <None Include="Views\AddressPage\Index.cshtml" />
+    <None Include="Views\CheckoutPage\Index.cshtml" />
+    <Content Include="Views\Shared\PagePartials\CheckoutOrderSummary.cshtml" />
+    <Content Include="Views\Shared\PagePartials\CheckoutShippingMethods.cshtml" />
+    <None Include="Views\RegisterPage\Index.cshtml" />
+    <Content Include="Views\Shared\PagePartials\AccountAddress.cshtml" />
+    <Content Include="Views\Shared\PagePartials\CheckoutAddresses.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52056/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

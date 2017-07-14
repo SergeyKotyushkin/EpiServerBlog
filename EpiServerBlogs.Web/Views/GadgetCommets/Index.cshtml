@@ -1,0 +1,45 @@
+﻿@model EpiServerBlogs.Web.ViewModels.GadgetCommentsViewModel
+
+@{
+    Layout = null;
+}
+
+<div class="epi-contentArea">
+    <div class="container-fluid">
+        @foreach (var articleComment in Model.ArticleCommentses)
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2>@articleComment.Page.Name</h2>
+                        </div>
+                    </div>
+                    @foreach (var comment in articleComment.Comments)
+                    {
+                        var currentComment = comment;
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <span class="panel-title">@comment.Name</span>
+                                        <em class="panel-title">&nbsp;(@comment.DateTime.ToString("G"))</em>
+                                    </div>
+                                    <div class="panel-body">
+                                        @comment.Text
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <label>
+                                    <span>Do not show</span>
+                                    @Html.CheckBoxFor(m => currentComment.DoNotShow, new { data_page = articleComment.Page.PageLink.ID, data_comment = comment.Id.StoreId })
+                                </label>
+                            </div>
+                        </div>
+                    }
+                    <hr/>
+                </div>
+            </div>
+        }
+    </div></div>

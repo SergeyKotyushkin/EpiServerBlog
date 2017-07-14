@@ -1,0 +1,21 @@
+﻿@model EpiServerBlogs.Web.ViewModels.Partial.ShoppingCartPartialViewModel
+
+<div class="pull-right">
+    <div class="dropdown cart-dropdown">
+        <div class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-lg fa-shopping-cart"></i>
+            @Model.CartTitle
+        </div>
+        <ul class="dropdown-menu dropdown-menu-right">
+            <li class="dropdown-header">It's your shopping cart</li>
+            @if (Model.IsEmpty)
+            {
+                <li class="dropdown-header">And it is empty</li>
+            }
+            else
+            {
+                <li><a href="@Url.ContentUrl(Model.CheckoutPageLink)">Checkout</a></li>
+            }
+        </ul>
+    </div>
+</div>
